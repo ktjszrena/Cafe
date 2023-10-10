@@ -7,14 +7,16 @@
 <div class="center_div">
   <h1>Cafe Login</h1>
 
-  <form>
+  <form name="loginForm" method="post" action="loginServlet">
   <label for="fname">Name:</label>
   <input type="text" id="name" name="name"><br><br>
   <label for="lname">Employee ID:</label>
   <input type="text" id="employeeID" name="employeeID"><br><br>
   <input type="submit" value="Login">
+  </form>
 
   <h3>Don't have an account?</h3>
+  <form name="createAccount" method="post" action="createAccountServlet">
   <label for="fname">Name:</label>
   <input type="text" id="name" name="name"><br><br>
   <label for="lname">Employee ID:</label>
