@@ -1,0 +1,13 @@
+create database if not exists staff;
+show databases;
+use staff;
+show tables;
+create table userprofile (role varchar(50), description varchar(100));
+describe userprofile;
+create table useraccount (id int, name varchar(30), password varchar(30), address varchar(100), scope varchar(30));
+describe useraccount;
+insert into userprofile values ('System Admin', 'Manage all user accounts');
+insert into userprofile values ('Cafe Manager', 'Handles bids for slots');
+insert into userprofile values ('Cafe Owner', 'Manage work slots');
+insert into userprofile values ('Cafe Staff', 'Bids for work slots');
+insert into useraccount values (1, 'John Doe', 'johnpass', 'John Street', 'Chef');
