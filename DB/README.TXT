@@ -12,7 +12,7 @@ mysqld --console
 To stop, use ctrl-c
 
 To start a client, start another cmd and use the following command in the same bin
-mysql -u root -password
+mysql -u root -p
 Use the password generated before
 
 Once you are in, change the password using the this sql (change xxxx to your desired password)
@@ -40,4 +40,4 @@ insert into userprofile values ('System Admin', 'Manage all user accounts');
 insert into userprofile values ('Cafe Manager', 'Handles bids for slots');
 insert into userprofile values ('Cafe Owner', 'Manage work slots');
 insert into userprofile values ('Cafe Staff', 'Bids for work slots');
-insert into useraccount values (1, 'John Doe', 'johnpass', 'John Street', 'Chef');
+insert into useraccount values (1, 'John Doe', 'johnpass', '28 Dec 1999', 'John Street');
