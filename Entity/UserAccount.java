@@ -7,13 +7,21 @@ public class UserAccount
     private String address;
     private UserProfile userProfile;
 
-    public UserAccount(String name, int userID, String password, String dob, String address)
+    private String sqlStatement;
+
+    private String scope;
+    private String message;
+
+    public UserAccount(String name, int userID, String password, String dob, String address, UserProfile userProfile, String scope)
     {
         this.name = name;
         this.userID = userID;
         this.password = password;
         this.dob = dob;
         this.address = address;
+        this.userProfile = userProfile;
+        this.scope = scope;
+        createUserAccount(name, userID, password, dob, address, userProfile.getName(), scope);
     }
     public String getName()
     {
@@ -42,6 +50,19 @@ public class UserAccount
     public UserProfile getUserProfile()
     {
         return userProfile;
+    }
+    public String getScope()
+    {
+        return scope;
+    }
+
+    public String getSqlStatement()
+    {
+        return sqlStatement;
+    }
+    public String getMessage()
+    {
+        return message;
     }
     public void setName(String name)
     {
@@ -72,9 +93,25 @@ public class UserAccount
     {
         this.userProfile = userProfile;
     }
-
-    public String createUserAccount(String name, int userID, String password, String dob, String address)
+    public void setScope(String scope)
     {
-        return "Sql Statement is: insert into useraccount values (" + userID + ", '" + name + "', '" + password + "', '" + address + "', '" + dob + "');";
+        this.scope = scope;
+    }
+
+    public void setSqlStatement(String sqlStatement)
+    {
+        this.sqlStatement = sqlStatement;
+    }
+    public void setMessage(String message)
+    {
+        this.message = message;
+    }
+
+    public String createUserAccount(String name, int userID, String password, String dob, String address, String userProfileName, String scope)
+    {
+        String sql = "insert into useraccount values (" + userID + ", '" + name + "', '" + password + "', '" + address + "', '" + dob + "', '" + userProfileName + "', '" + scope + "');";
+        setSqlStatement(sql);
+        setMessage("Success");
+        return sqlStatement;
     }
 }
