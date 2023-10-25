@@ -4,9 +4,11 @@ public class Main {
     public static void main(String[] args)
     {
         Controller c = new Controller();
-        UserProfile ptest = new UserProfile("Staff","Normal Employee","Able to bid for slots");
+        //UserProfile ptest = new UserProfile("Staff","Normal Employee","Able to bid for slots");
 
         //UserAccount atest = new UserAccount("John",10, "pass","27 Aug 1990","123 Main St", ptest, "Cashier");
-        System.out.println(c.createUserAccountC("John",10, "pass","27 Aug 1990","123 Main St", ptest, "Cashier"));
+        //System.out.println(c.createUserAccountC("John",10, "pass","27 Aug 1990","123 Main St", ptest, "Cashier"));
+        //System.out.println(c.createUserProfileC("Cleaner", "Ensure area is clean", "CafeStaff"));
+        System.out.println(c.loginUserAccountC(21, "pass"));
     }
 }

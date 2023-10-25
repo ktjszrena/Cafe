@@ -21,7 +21,13 @@ public class UserAccount
         this.address = address;
         this.userProfile = userProfile;
         this.scope = scope;
-        createUserAccount(name, userID, password, dob, address, userProfile.getName(), scope);
+        //createUserAccount(name, userID, password, dob, address, userProfile.getName(), scope);
+    }
+
+    public UserAccount(int userID, String password)
+    {
+        this.userID = userID;
+        this.password = password;
     }
     public String getName()
     {
@@ -111,7 +117,15 @@ public class UserAccount
     {
         String sql = "insert into useraccount values (" + userID + ", '" + name + "', '" + password + "', '" + address + "', '" + dob + "', '" + userProfileName + "', '" + scope + "');";
         setSqlStatement(sql);
-        setMessage("Success");
+        this.message = "Success!";
         return sqlStatement;
+    }
+
+    public boolean loginUserAccount(int userID, String password)
+    {
+        String sql = "select * from useraccount where userID = " + userID + "and password = '" + password + "';";
+        setSqlStatement(sql);
+        this.message = "Success!";
+        return true;
     }
 }
