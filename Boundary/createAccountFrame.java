@@ -16,6 +16,15 @@ public class createAccountFrame extends javax.swing.JFrame {
         initComponents();
         setTitle("ACCOUNT CREATION");
     }
+    
+    public String createAccountController(){
+        String account;
+        account = newUsernameTF.getText() + ", " + newPasswordTF.getText() + ", " +
+                userIDTF.getText() + ", " + dobTF.getText() + ", " + 
+                addressTF.getText() + ", " + employeeTypeCB.getSelectedItem().toString() + 
+                ", " + positionCB.getSelectedItem().toString();
+        return account;
+    }
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -38,8 +47,8 @@ public class createAccountFrame extends javax.swing.JFrame {
         addressLabel = new javax.swing.JLabel();
         addressTF = new javax.swing.JTextField();
         jPanel1 = new javax.swing.JPanel();
-        newUsernameLabel3 = new javax.swing.JLabel();
-        jComboBox1 = new javax.swing.JComboBox<>();
+        positionLabel = new javax.swing.JLabel();
+        positionCB = new javax.swing.JComboBox<>();
         employeeTypeCB = new javax.swing.JComboBox<>();
         employeeTypeLabel = new javax.swing.JLabel();
 
@@ -63,6 +72,11 @@ public class createAccountFrame extends javax.swing.JFrame {
 
         createAccountButton.setText("Create Account");
         createAccountButton.setToolTipText("");
+        createAccountButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                createAccountButtonActionPerformed(evt);
+            }
+        });
 
         userIDLabel.setText("User ID:");
 
@@ -88,9 +102,9 @@ public class createAccountFrame extends javax.swing.JFrame {
             }
         });
 
-        newUsernameLabel3.setText("Position");
+        positionLabel.setText("Position");
 
-        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Waiter", "Cashier", "Kitchen" }));
+        positionCB.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Waiter", "Cashier", "Kitchen" }));
 
         employeeTypeCB.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Staff", "Manager", "Owner" }));
         employeeTypeCB.addActionListener(new java.awt.event.ActionListener() {
@@ -109,14 +123,14 @@ public class createAccountFrame extends javax.swing.JFrame {
                 .addContainerGap()
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addComponent(newUsernameLabel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(positionLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addGap(18, 18, 18))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addComponent(employeeTypeLabel)
                         .addGap(9, 9, 9)))
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(employeeTypeCB, 0, 100, Short.MAX_VALUE)
-                    .addComponent(jComboBox1, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                    .addComponent(positionCB, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -127,8 +141,8 @@ public class createAccountFrame extends javax.swing.JFrame {
                     .addComponent(employeeTypeLabel))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(newUsernameLabel3)
-                    .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(positionLabel)
+                    .addComponent(positionCB, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
@@ -212,7 +226,13 @@ public class createAccountFrame extends javax.swing.JFrame {
     }//GEN-LAST:event_newPasswordTFActionPerformed
 
     private void employeeTypeCBActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_employeeTypeCBActionPerformed
- 
+        String selectedValue = employeeTypeCB.getSelectedItem().toString();
+        if (selectedValue.contains("Owner") || selectedValue.contains("Manager")){
+            positionCB.setEnabled(false);
+        }
+        else if (selectedValue.contains("Staff")){
+            positionCB.setEnabled(true);
+        }
     }//GEN-LAST:event_employeeTypeCBActionPerformed
 
     private void userIDTFActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_userIDTFActionPerformed
@@ -226,6 +246,13 @@ public class createAccountFrame extends javax.swing.JFrame {
     private void addressTFActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addressTFActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_addressTFActionPerformed
+
+    private void createAccountButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_createAccountButtonActionPerformed
+        // TODO add your handling code here:
+        String msg = createAccountController();
+        new testFrame(msg).setVisible(true);
+        setVisible(false);
+    }//GEN-LAST:event_createAccountButtonActionPerformed
 
     /**
      * @param args the command line arguments
@@ -270,13 +297,13 @@ public class createAccountFrame extends javax.swing.JFrame {
     private javax.swing.JTextField dobTF;
     private javax.swing.JComboBox<String> employeeTypeCB;
     private javax.swing.JLabel employeeTypeLabel;
-    private javax.swing.JComboBox<String> jComboBox1;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JLabel newPasswordLabel;
     private javax.swing.JTextField newPasswordTF;
     private javax.swing.JLabel newUsernameLabel;
-    private javax.swing.JLabel newUsernameLabel3;
     private javax.swing.JTextField newUsernameTF;
+    private javax.swing.JComboBox<String> positionCB;
+    private javax.swing.JLabel positionLabel;
     private javax.swing.JLabel userIDLabel;
     private javax.swing.JTextField userIDTF;
     // End of variables declaration//GEN-END:variables
