@@ -36,8 +36,8 @@ create table useraccount (name varchar(30), id int, password varchar(30), dob va
 describe useraccount;
 
 To insert values into the tables
-insert into userprofile values ('System Admin', 'Manage all user accounts');
-insert into userprofile values ('Cafe Manager', 'Handles bids for slots');
-insert into userprofile values ('Cafe Owner', 'Manage work slots');
-insert into userprofile values ('Cafe Staff', 'Bids for work slots');
+insert into userprofile values ('System Admin', 'Manage all user accounts', 'sysadm');
+insert into userprofile values ('Cafe Manager', 'Handles bids for slots', 'manager');
+insert into userprofile values ('Cafe Owner', 'Manage work slots', 'owner');
+insert into userprofile values ('Cafe Staff', 'Bids for work slots', 'staff');
 insert into useraccount values ('John Doe', 1, 'johnpass', '28 Dec 1999', 'John Street', 'Cafe Staff', 'Chef');
