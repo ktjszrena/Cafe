@@ -30,7 +30,7 @@ create database if not exists staff;
 show databases;
 use staff;
 show tables;
-create table userprofile (role varchar(50), description varchar(100), permission varchar(200);
+create table userprofile (role varchar(50), description varchar(100), permission varchar(200));
 describe userprofile;
 create table useraccount (name varchar(30), id int, password varchar(30), dob varchar(15), address varchar(100), profile varchar(50), scope varchar(50));
 describe useraccount;
