@@ -104,7 +104,7 @@ public class createAccountFrame extends javax.swing.JFrame {
 
         positionLabel.setText("Position");
 
-        positionCB.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Waiter", "Cashier", "Kitchen" }));
+        positionCB.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Waiter", "Cashier", "Kitchen", "Manager", "Owner" }));
 
         employeeTypeCB.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Staff", "Manager", "Owner" }));
         employeeTypeCB.addActionListener(new java.awt.event.ActionListener() {
@@ -227,8 +227,13 @@ public class createAccountFrame extends javax.swing.JFrame {
 
     private void employeeTypeCBActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_employeeTypeCBActionPerformed
         String selectedValue = employeeTypeCB.getSelectedItem().toString();
-        if (selectedValue.contains("Owner") || selectedValue.contains("Manager")){
+        if (selectedValue.contains("Owner")){
             positionCB.setEnabled(false);
+            positionCB.setSelectedItem("Owner");
+        }
+        else if (selectedValue.contains("Manager")){
+            positionCB.setEnabled(false);
+            positionCB.setSelectedItem("Manager");
         }
         else if (selectedValue.contains("Staff")){
             positionCB.setEnabled(true);
