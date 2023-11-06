@@ -1,3 +1,5 @@
+import java.util.ArrayList;
+
 public class UserProfile
 {
     public String name;
@@ -10,6 +12,11 @@ public class UserProfile
         this.name = name;
         this.description = description;
         this.permissions = permissions;
+    }
+
+    public UserProfile()
+    {
+
     }
     public String getName()
     {
@@ -63,5 +70,15 @@ public class UserProfile
         setSqlstatement(sql);
         this.message = "Success";
         return getSqlstatement();
+    }
+
+    public ArrayList<String> viewUserProfile() //Should be getting from the SQL, not here
+    {
+        ArrayList<String> profiles = new ArrayList<>();
+        profiles.add("System Admin, Manage all user accounts, sysadm");
+        profiles.add("Cafe Manager, Handles bids for slots, manager");
+        profiles.add("Cafe Owner, Manage work slots, owner");
+        profiles.add("Cafe Staff, Bids for work slots, staff");
+        return profiles;
     }
 }

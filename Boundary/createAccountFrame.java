@@ -3,6 +3,8 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
 
+import java.util.ArrayList;
+
 /**
  *
  * @author yuanc
@@ -12,9 +14,91 @@ public class createAccountFrame extends javax.swing.JFrame {
     /**
      * Creates new form createAccountFrame
      */
+    private class UserProfile
+    {
+        viewUserProfilesC vup = new viewUserProfilesC();
+        private String name;
+        private String desc;
+        private String perms;
+        private String search;
+        ArrayList<String> profiles = new ArrayList<>();
+
+        ArrayList<String> namelist = new ArrayList<>();
+
+        public UserProfile(String search)
+        {
+            this.search = search;
+            //System.out.println("Name is " + getName());
+            profiles = vup.viewUserProfile();
+            getNamelist();
+        }
+
+        public String getName()
+        {
+            return name;
+        }
+
+        public String getDesc()
+        {
+            return desc;
+        }
+
+        public String getPerms()
+        {
+            return perms;
+        }
+        public String getSearch()
+        {
+            return search;
+        }
+
+        public void setName()
+        {
+            this.name = name;
+        }
+
+        public void setPerms()
+        {
+            this.perms = perms;
+        }
+
+        public void setDesc()
+        {
+            this.desc = desc;
+        }
+        public void setSearch()
+        {
+            this.search = search;
+        }
+
+        private String returnList(String search)
+        {
+
+            return "something";
+        }
+        //public ArrayList<String> getUserProfiles() //Should be getting from the SQL, not here
+        //{
+        //    profiles.add("System Admin, Manage all user accounts, sysadm");
+        //    profiles.add("Cafe Manager, Handles bids for slots, manager");
+        //    profiles.add("Cafe Owner, Manage work slots, owner");
+        //    profiles.add("Cafe Staff, Bids for work slots, staff");
+        //    return profiles;
+        //}
+        public ArrayList<String> getNamelist() //Should be getting from the SQL, not here
+        {
+            for (String profile : profiles)
+            {
+                String firstele = profile.split(",")[0];
+                System.out.println(firstele);
+            }
+            return namelist;
+        }
+    }
     public createAccountFrame() {
         initComponents();
         setTitle("ACCOUNT CREATION");
+        UserProfile a = new UserProfile("name here");
+
     }
     
     public String createAccountController(){
@@ -313,3 +397,4 @@ public class createAccountFrame extends javax.swing.JFrame {
     private javax.swing.JTextField userIDTF;
     // End of variables declaration//GEN-END:variables
 }
+
