@@ -188,7 +188,7 @@ public class createAccountFrame extends javax.swing.JFrame {
 
         positionLabel.setText("Position");
 
-        positionCB.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Waiter", "Cashier", "Kitchen", "Manager", "Owner" }));
+        positionCB.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Waiter", "Cashier", "Kitchen" }));
 
         employeeTypeCB.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Staff", "Manager", "Owner" }));
         employeeTypeCB.addActionListener(new java.awt.event.ActionListener() {
@@ -313,13 +313,19 @@ public class createAccountFrame extends javax.swing.JFrame {
         String selectedValue = employeeTypeCB.getSelectedItem().toString();
         if (selectedValue.contains("Owner")){
             positionCB.setEnabled(false);
+            positionCB.addItem("Owner");
             positionCB.setSelectedItem("Owner");
         }
         else if (selectedValue.contains("Manager")){
             positionCB.setEnabled(false);
+            positionCB.addItem("Manager");
             positionCB.setSelectedItem("Manager");
         }
         else if (selectedValue.contains("Staff")){
+            positionCB.removeAllItems();
+            positionCB.addItem("Waiter");
+            positionCB.addItem("Cashier");
+            positionCB.addItem("Kitchen");
             positionCB.setEnabled(true);
         }
     }//GEN-LAST:event_employeeTypeCBActionPerformed
