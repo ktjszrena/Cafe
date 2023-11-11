@@ -2,13 +2,14 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
-
+import com.raven.datechooser.DateChooser;
 /**
  *
  * @author yuanc
  */
 public class managerMain extends javax.swing.JFrame {
 
+    private DateChooser chDate = new DateChooser();
     /**
      * Creates new form managerMain
      */
@@ -28,12 +29,43 @@ public class managerMain extends javax.swing.JFrame {
         jMenuBar1 = new javax.swing.JMenuBar();
         jMenu1 = new javax.swing.JMenu();
         jMenu2 = new javax.swing.JMenu();
+        availableStaffMenuItem = new javax.swing.JMenuItem();
+        viewMenuItem = new javax.swing.JMenu();
+        jMenuItem1 = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         jMenu1.setText("Approve Bids");
         jMenuBar1.add(jMenu1);
+
+        jMenu2.setText("Staff Management");
+
+        availableStaffMenuItem.setText("Available Staff");
+        availableStaffMenuItem.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                availableStaffMenuItemActionPerformed(evt);
+            }
+        });
+        jMenu2.add(availableStaffMenuItem);
+
         jMenuBar1.add(jMenu2);
+
+        viewMenuItem.setText("Slot View");
+        viewMenuItem.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                viewMenuItemActionPerformed(evt);
+            }
+        });
+
+        jMenuItem1.setText("View");
+        jMenuItem1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem1ActionPerformed(evt);
+            }
+        });
+        viewMenuItem.add(jMenuItem1);
+
+        jMenuBar1.add(viewMenuItem);
 
         setJMenuBar(jMenuBar1);
 
@@ -50,6 +82,22 @@ public class managerMain extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void availableStaffMenuItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_availableStaffMenuItemActionPerformed
+        // TODO add your handling code here:
+        availableStaff aS = new availableStaff();
+        aS.setVisible(true);
+    }//GEN-LAST:event_availableStaffMenuItemActionPerformed
+
+    private void viewMenuItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_viewMenuItemActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_viewMenuItemActionPerformed
+
+    private void jMenuItem1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem1ActionPerformed
+        // TODO add your handling code here:
+        managerSlotView msv = new managerSlotView();
+        msv.setVisible(true);
+    }//GEN-LAST:event_jMenuItem1ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -87,8 +135,11 @@ public class managerMain extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JMenuItem availableStaffMenuItem;
     private javax.swing.JMenu jMenu1;
     private javax.swing.JMenu jMenu2;
     private javax.swing.JMenuBar jMenuBar1;
+    private javax.swing.JMenuItem jMenuItem1;
+    private javax.swing.JMenu viewMenuItem;
     // End of variables declaration//GEN-END:variables
 }

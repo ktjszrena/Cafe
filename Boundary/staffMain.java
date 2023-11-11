@@ -2,17 +2,21 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
-
+import com.formdev.flatlaf.FlatIntelliJLaf;
+import com.raven.datechooser.DateChooser;
 /**
  *
  * @author yuanc
  */
 public class staffMain extends javax.swing.JFrame {
 
+    private DateChooser chDate = new DateChooser();
+    
     /**
      * Creates new form staffMain
      */
     public staffMain() {
+        setTitle("Staff Main Page");
         initComponents();
     }
 
@@ -27,12 +31,40 @@ public class staffMain extends javax.swing.JFrame {
 
         jMenuBar1 = new javax.swing.JMenuBar();
         jMenu1 = new javax.swing.JMenu();
+        jMenu3 = new javax.swing.JMenu();
+        searchDayMenuItem = new javax.swing.JMenuItem();
+        jMenu4 = new javax.swing.JMenu();
+        slotViewMenuItem = new javax.swing.JMenuItem();
         jMenu2 = new javax.swing.JMenu();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         jMenu1.setText("Bid");
         jMenuBar1.add(jMenu1);
+
+        jMenu3.setText("Search");
+
+        searchDayMenuItem.setText("Search Day");
+        searchDayMenuItem.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                searchDayMenuItemActionPerformed(evt);
+            }
+        });
+        jMenu3.add(searchDayMenuItem);
+
+        jMenuBar1.add(jMenu3);
+
+        jMenu4.setText("Slot View");
+
+        slotViewMenuItem.setText("View");
+        slotViewMenuItem.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                slotViewMenuItemActionPerformed(evt);
+            }
+        });
+        jMenu4.add(slotViewMenuItem);
+
+        jMenuBar1.add(jMenu4);
         jMenuBar1.add(jMenu2);
 
         setJMenuBar(jMenuBar1);
@@ -50,6 +82,18 @@ public class staffMain extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void searchDayMenuItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_searchDayMenuItemActionPerformed
+        // TODO add your handling code here:
+        staffSearchDay ssd = new staffSearchDay();
+        ssd.setVisible(true);
+    }//GEN-LAST:event_searchDayMenuItemActionPerformed
+
+    private void slotViewMenuItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_slotViewMenuItemActionPerformed
+        // TODO add your handling code here:
+        staffSlotView ssv = new staffSlotView();
+        ssv.setVisible(true);
+    }//GEN-LAST:event_slotViewMenuItemActionPerformed
 
     /**
      * @param args the command line arguments
@@ -89,6 +133,10 @@ public class staffMain extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JMenu jMenu1;
     private javax.swing.JMenu jMenu2;
+    private javax.swing.JMenu jMenu3;
+    private javax.swing.JMenu jMenu4;
     private javax.swing.JMenuBar jMenuBar1;
+    private javax.swing.JMenuItem searchDayMenuItem;
+    private javax.swing.JMenuItem slotViewMenuItem;
     // End of variables declaration//GEN-END:variables
 }

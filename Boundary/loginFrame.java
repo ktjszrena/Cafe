@@ -120,7 +120,7 @@ public class loginFrame extends javax.swing.JFrame {
     }//GEN-LAST:event_passwordTFActionPerformed
 
     private void loginButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_loginButtonActionPerformed
-        String x = "owner";
+        String x = "staff";
         if (x.contains("staff")){
             staffMain sm = new staffMain();
             sm.show(); //Staff Display Page
@@ -138,6 +138,12 @@ public class loginFrame extends javax.swing.JFrame {
         else if (x.contains("owner")){
             ownerMain om = new ownerMain();
             om.show(); //Owner Display Page
+            
+            dispose();
+        }
+        else if (x.contains("admin")){
+            adminMain am = new adminMain();
+            am.show();
             
             dispose();
         }

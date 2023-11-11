@@ -25,31 +25,30 @@ public class adminMain extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jMenuBar2 = new javax.swing.JMenuBar();
-        jMenu3 = new javax.swing.JMenu();
-        jMenu4 = new javax.swing.JMenu();
         jButton1 = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
-        jTextArea1 = new javax.swing.JTextArea();
+        adminConsol = new javax.swing.JTextArea();
+        jLabel1 = new javax.swing.JLabel();
+        jLabel2 = new javax.swing.JLabel();
+        jLabel3 = new javax.swing.JLabel();
+        jLabel4 = new javax.swing.JLabel();
+        searchUsernameTF = new javax.swing.JTextField();
+        searchIDTF = new javax.swing.JTextField();
+        searchDOBTF = new javax.swing.JTextField();
+        searchAddressTF = new javax.swing.JTextField();
         jMenuBar1 = new javax.swing.JMenuBar();
         jMenu1 = new javax.swing.JMenu();
-        jMenuItem2 = new javax.swing.JMenuItem();
-        jMenuItem1 = new javax.swing.JMenuItem();
-        jMenuItem4 = new javax.swing.JMenuItem();
-        jMenuItem5 = new javax.swing.JMenuItem();
-        jMenuItem3 = new javax.swing.JMenuItem();
+        searchUser = new javax.swing.JMenuItem();
+        viewUser = new javax.swing.JMenuItem();
+        updateUser = new javax.swing.JMenuItem();
+        deleteUser = new javax.swing.JMenuItem();
+        createUser = new javax.swing.JMenuItem();
         jMenu2 = new javax.swing.JMenu();
-        jMenu5 = new javax.swing.JMenu();
-        jMenu6 = new javax.swing.JMenu();
-        jMenu7 = new javax.swing.JMenu();
-        jMenu8 = new javax.swing.JMenu();
-        jMenu9 = new javax.swing.JMenu();
-
-        jMenu3.setText("File");
-        jMenuBar2.add(jMenu3);
-
-        jMenu4.setText("Edit");
-        jMenuBar2.add(jMenu4);
+        searchProfile = new javax.swing.JMenuItem();
+        viewProfile = new javax.swing.JMenuItem();
+        updateProfile = new javax.swing.JMenuItem();
+        deleteProfile = new javax.swing.JMenuItem();
+        createProfile = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -60,50 +59,68 @@ public class adminMain extends javax.swing.JFrame {
             }
         });
 
-        jTextArea1.setColumns(20);
-        jTextArea1.setRows(5);
-        jScrollPane1.setViewportView(jTextArea1);
+        adminConsol.setColumns(20);
+        adminConsol.setRows(5);
+        jScrollPane1.setViewportView(adminConsol);
+
+        jLabel1.setText("Username:");
+
+        jLabel2.setText("ID: ");
+
+        jLabel3.setText("Date of Birth:");
+
+        jLabel4.setText("Address:");
 
         jMenu1.setText("Account Management");
 
-        jMenuItem2.setText("Search User");
-        jMenuItem2.addActionListener(new java.awt.event.ActionListener() {
+        searchUser.setText("Search User");
+        searchUser.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jMenuItem2ActionPerformed(evt);
+                searchUserActionPerformed(evt);
             }
         });
-        jMenu1.add(jMenuItem2);
+        jMenu1.add(searchUser);
 
-        jMenuItem1.setText("View User");
-        jMenu1.add(jMenuItem1);
+        viewUser.setText("View User");
+        viewUser.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                viewUserActionPerformed(evt);
+            }
+        });
+        jMenu1.add(viewUser);
 
-        jMenuItem4.setText("Update");
-        jMenu1.add(jMenuItem4);
+        updateUser.setText("Update User");
+        jMenu1.add(updateUser);
 
-        jMenuItem5.setText("Delete");
-        jMenu1.add(jMenuItem5);
+        deleteUser.setText("Delete User");
+        jMenu1.add(deleteUser);
 
-        jMenuItem3.setText("Create User");
-        jMenu1.add(jMenuItem3);
+        createUser.setText("Create User");
+        jMenu1.add(createUser);
 
         jMenuBar1.add(jMenu1);
 
         jMenu2.setText("Profile Management");
 
-        jMenu5.setText("Search");
-        jMenu2.add(jMenu5);
+        searchProfile.setText("Search");
+        searchProfile.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                searchProfileActionPerformed(evt);
+            }
+        });
+        jMenu2.add(searchProfile);
 
-        jMenu6.setText("View");
-        jMenu2.add(jMenu6);
+        viewProfile.setText("View");
+        jMenu2.add(viewProfile);
 
-        jMenu7.setText("Update");
-        jMenu2.add(jMenu7);
+        updateProfile.setText("Update");
+        jMenu2.add(updateProfile);
 
-        jMenu8.setText("Delete");
-        jMenu2.add(jMenu8);
+        deleteProfile.setText("Delete");
+        jMenu2.add(deleteProfile);
 
-        jMenu9.setText("Create");
-        jMenu2.add(jMenu9);
+        createProfile.setText("Create");
+        jMenu2.add(createProfile);
 
         jMenuBar1.add(jMenu2);
 
@@ -116,21 +133,50 @@ public class adminMain extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(235, 235, 235)
+                        .addGap(240, 240, 240)
                         .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 97, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(15, 15, 15)
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 550, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 550, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(layout.createSequentialGroup()
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                    .addComponent(jLabel2)
+                                    .addComponent(jLabel1)
+                                    .addComponent(jLabel3)
+                                    .addComponent(jLabel4))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                    .addComponent(searchUsernameTF, javax.swing.GroupLayout.DEFAULT_SIZE, 111, Short.MAX_VALUE)
+                                    .addComponent(searchIDTF)
+                                    .addComponent(searchDOBTF)
+                                    .addComponent(searchAddressTF))))))
                 .addContainerGap(19, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addGap(15, 15, 15)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 352, Short.MAX_VALUE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGap(17, 17, 17)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel1)
+                    .addComponent(searchUsernameTF, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel2)
+                    .addComponent(searchIDTF, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel3)
+                    .addComponent(searchDOBTF, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel4)
+                    .addComponent(searchAddressTF, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 226, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap())
+                .addGap(12, 12, 12))
         );
 
         pack();
@@ -140,9 +186,20 @@ public class adminMain extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_jButton1ActionPerformed
 
-    private void jMenuItem2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem2ActionPerformed
+    private void searchUserActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_searchUserActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jMenuItem2ActionPerformed
+        adminConsol.setText("Searching user with name: " + searchUsernameTF.getText() + ", ID: " + searchIDTF.getText() + ", DOB: " + searchDOBTF.getText() + ", Address: " + searchAddressTF.getText());
+        
+    }//GEN-LAST:event_searchUserActionPerformed
+
+    private void searchProfileActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_searchProfileActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_searchProfileActionPerformed
+
+    private void viewUserActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_viewUserActionPerformed
+        // TODO add your handling code here:
+        adminConsol.setText("Viewing all users.");
+    }//GEN-LAST:event_viewUserActionPerformed
 
     /**
      * @param args the command line arguments
@@ -180,24 +237,29 @@ public class adminMain extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JTextArea adminConsol;
+    private javax.swing.JMenuItem createProfile;
+    private javax.swing.JMenuItem createUser;
+    private javax.swing.JMenuItem deleteProfile;
+    private javax.swing.JMenuItem deleteUser;
     private javax.swing.JButton jButton1;
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
     private javax.swing.JMenu jMenu1;
     private javax.swing.JMenu jMenu2;
-    private javax.swing.JMenu jMenu3;
-    private javax.swing.JMenu jMenu4;
-    private javax.swing.JMenu jMenu5;
-    private javax.swing.JMenu jMenu6;
-    private javax.swing.JMenu jMenu7;
-    private javax.swing.JMenu jMenu8;
-    private javax.swing.JMenu jMenu9;
     private javax.swing.JMenuBar jMenuBar1;
-    private javax.swing.JMenuBar jMenuBar2;
-    private javax.swing.JMenuItem jMenuItem1;
-    private javax.swing.JMenuItem jMenuItem2;
-    private javax.swing.JMenuItem jMenuItem3;
-    private javax.swing.JMenuItem jMenuItem4;
-    private javax.swing.JMenuItem jMenuItem5;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTextArea jTextArea1;
+    private javax.swing.JTextField searchAddressTF;
+    private javax.swing.JTextField searchDOBTF;
+    private javax.swing.JTextField searchIDTF;
+    private javax.swing.JMenuItem searchProfile;
+    private javax.swing.JMenuItem searchUser;
+    private javax.swing.JTextField searchUsernameTF;
+    private javax.swing.JMenuItem updateProfile;
+    private javax.swing.JMenuItem updateUser;
+    private javax.swing.JMenuItem viewProfile;
+    private javax.swing.JMenuItem viewUser;
     // End of variables declaration//GEN-END:variables
 }
