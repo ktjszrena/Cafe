@@ -190,7 +190,7 @@ public class createAccountFrame extends javax.swing.JFrame {
 
         positionCB.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Waiter", "Cashier", "Kitchen" }));
 
-        employeeTypeCB.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Staff", "Manager", "Owner" }));
+        employeeTypeCB.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Staff", "Manager", "Owner", "Admin" }));
         employeeTypeCB.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 employeeTypeCBActionPerformed(evt);
@@ -328,6 +328,10 @@ public class createAccountFrame extends javax.swing.JFrame {
             positionCB.addItem("Kitchen");
             positionCB.setEnabled(true);
         }
+        else if (selectedValue.contains("Admin")){
+            positionCB.setEnabled(false);
+            positionCB.addItem("Admin");
+            positionCB.setSelectedItem("Admin");}
     }//GEN-LAST:event_employeeTypeCBActionPerformed
 
     private void userIDTFActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_userIDTFActionPerformed
