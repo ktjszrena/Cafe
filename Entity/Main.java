@@ -9,6 +9,6 @@ public class Main {
         //UserAccount atest = new UserAccount("John",10, "pass","27 Aug 1990","123 Main St", ptest, "Cashier");
         //System.out.println(c.createUserAccountC("John",10, "pass","27 Aug 1990","123 Main St", ptest, "Cashier"));
         //System.out.println(c.createUserProfileC("Cleaner", "Ensure area is clean", "CafeStaff"));
-        System.out.println(c.loginUserAccountC(21, "pass"));
+        //System.out.println(c.loginUserAccountC(21, "pass"));
     }
 }

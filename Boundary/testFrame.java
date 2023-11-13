@@ -32,7 +32,7 @@ public class testFrame extends javax.swing.JFrame {
 
         testLabel = new javax.swing.JLabel();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        //setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         testLabel.setText("when account create button pressed this will display account info");
 

@@ -1,3 +1,7 @@
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.SQLException;
+import java.sql.Statement;
 import java.util.ArrayList;
 
 public class UserProfile
@@ -64,11 +68,42 @@ public class UserProfile
     {
         this.sqlstatement = sqlstatement;
     }
+    private void connEx(String sql)
+    {
+        setSqlstatement(sql);
+        try (
+                Connection conn = DriverManager.getConnection(
+                        "jdbc:mysql://localhost:3306/staff","Admin","abcd"
+                );
+                Statement stmt = conn.createStatement();
+        )
+        {
+            System.out.println("The SQL statement is " + sql + "\n");
+
+            int r = stmt.executeUpdate(sql);
+            System.out.println("Total number of records Inserted = " + r);
+            this.message = "Success!";
+        }
+        catch(SQLException ex)
+        {
+            ex.printStackTrace();
+            this.message = "Operation Failed!";
+        }
+    }
     public String createUserProfile(String name, String description, String permissions)
     {
         String sql = "insert into userprofile values ('" + name + "', '" + description + "', '" + permissions + "');";
-        setSqlstatement(sql);
-        this.message = "Success";
+
+        //setSqlstatement(sql);
+        if (name != null && !name.trim().isEmpty() && description != null && !description.trim().isEmpty()) {
+            connEx(sql);
+            setMessage("User profile " + name + " has been added.");
+        }
+        else
+        {
+            setMessage("Invalid input, try again");
+        }
+        //this.message = "Success";
         return getSqlstatement();
     }
 

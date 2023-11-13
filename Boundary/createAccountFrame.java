@@ -3,6 +3,7 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
 
+import javax.swing.*;
 import java.util.ArrayList;
 
 /**
@@ -154,7 +155,7 @@ public class createAccountFrame extends javax.swing.JFrame {
         employeeTypeCB = new javax.swing.JComboBox<>();
         employeeTypeLabel = new javax.swing.JLabel();
 
-        //setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(WindowConstants.DISPOSE_ON_CLOSE);
 
 
         newUsernameLabel.setText("New Username:");
