@@ -21,6 +21,7 @@ public class createAccountFrame extends javax.swing.JFrame {
         private String desc;
         private String perms;
         private String search;
+        private String record;
         ArrayList<String> profiles = new ArrayList<>();
 
         ArrayList<String> namelist = new ArrayList<>();
@@ -52,28 +53,27 @@ public class createAccountFrame extends javax.swing.JFrame {
             return search;
         }
 
-        public void setName()
+        public void setName(String name)
         {
             this.name = name;
         }
 
-        public void setPerms()
+        public void setPerms(String perms)
         {
             this.perms = perms;
         }
 
-        public void setDesc()
+        public void setDesc(String desc)
         {
             this.desc = desc;
         }
-        public void setSearch()
+        public void setSearch(String search)
         {
             this.search = search;
         }
 
         private String returnList(String search)
         {
-
             return "something";
         }
         //public ArrayList<String> getUserProfiles() //Should be getting from the SQL, not here
@@ -84,11 +84,24 @@ public class createAccountFrame extends javax.swing.JFrame {
         //    profiles.add("Cafe Staff, Bids for work slots, staff");
         //    return profiles;
         //}
-        public ArrayList<String> getNamelist() //Should be getting from the SQL, not here
+        public ArrayList<String> getNamelist() //Getting Profile List
         {
-            for (String profile : profiles)
+            for (String profilelist : profiles)
             {
-                String firstele = profile.split(",")[0];
+                String firstele = profilelist.split(",")[0];
+                if (firstele.contains(search))
+                {
+                    record = profilelist;
+                    setName(firstele);
+                    String rdesc = profilelist.split(", ")[1];
+                    setDesc(rdesc);
+                    String rperm = profilelist.split(", ")[2];
+                    setPerms(rperm);
+                    System.out.println("First ele is " + record);
+                    System.out.println("Name is " + getName());
+                    System.out.println("Desc is " + getDesc());
+                    System.out.println("Perm is " + getPerms());
+                }
                 System.out.println(firstele);
             }
             return namelist;
@@ -97,17 +110,22 @@ public class createAccountFrame extends javax.swing.JFrame {
     public createAccountFrame() {
         initComponents();
         setTitle("ACCOUNT CREATION");
-        UserProfile a = new UserProfile("name here");
-
+        //UserProfile a = new UserProfile("name here");
     }
     
     public String createAccountController(){
         String account;
         account = newUsernameTF.getText() + ", " + newPasswordTF.getText() + ", " +
-                userIDTF.getText() + ", " + dobTF.getText() + ", " + 
-                addressTF.getText() + ", " + employeeTypeCB.getSelectedItem().toString() + 
+                userIDTF.getText() + ", " + dobTF.getText() + ", " +
+                addressTF.getText() + ", " + employeeTypeCB.getSelectedItem().toString() +
                 ", " + positionCB.getSelectedItem().toString();
-        return account;
+        UserProfile UP = new UserProfile(employeeTypeCB.getSelectedItem().toString());
+        UP.getNamelist();
+        System.out.println("Selected profile is " + UP.search);
+        createUserAccountC CUA = new createUserAccountC();
+        CUA.createUserAccountC(newUsernameTF.getText(), Integer.parseInt(userIDTF.getText()), newPasswordTF.getText(),
+                dobTF.getText(), addressTF.getText(), UP.getName(), positionCB.getSelectedItem().toString());
+        return CUA.getMessage();
     }
 
     /**
@@ -136,7 +154,8 @@ public class createAccountFrame extends javax.swing.JFrame {
         employeeTypeCB = new javax.swing.JComboBox<>();
         employeeTypeLabel = new javax.swing.JLabel();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        //setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+
 
         newUsernameLabel.setText("New Username:");
 
@@ -350,6 +369,8 @@ public class createAccountFrame extends javax.swing.JFrame {
         // TODO add your handling code here:
         String msg = createAccountController();
         new testFrame(msg).setVisible(true);
+        //adminMain am = new adminMain();
+        //am.show();
         setVisible(false);
     }//GEN-LAST:event_createAccountButtonActionPerformed
 

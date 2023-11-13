@@ -96,6 +96,12 @@ public class adminMain extends javax.swing.JFrame {
         jMenu1.add(deleteUser);
 
         createUser.setText("Create User");
+        createUser.addActionListener(new java.awt.event.ActionListener()
+        {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                createUserActionPerformed(evt);
+            }
+        });
         jMenu1.add(createUser);
 
         jMenuBar1.add(jMenu1);
@@ -120,6 +126,12 @@ public class adminMain extends javax.swing.JFrame {
         jMenu2.add(deleteProfile);
 
         createProfile.setText("Create");
+        createProfile.addActionListener(new java.awt.event.ActionListener()
+        {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                createProfileActionPerformed(evt);
+            }
+        });
         jMenu2.add(createProfile);
 
         jMenuBar1.add(jMenu2);
@@ -200,6 +212,18 @@ public class adminMain extends javax.swing.JFrame {
         // TODO add your handling code here:
         adminConsol.setText("Viewing all users.");
     }//GEN-LAST:event_viewUserActionPerformed
+
+    private void createUserActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_createUserActionPerformed
+        // TODO add your handling code here:
+        createAccountFrame caf = new createAccountFrame();
+        caf.setVisible(true);
+    }//GEN-LAST:event_createUserActionPerformed
+
+    private void createProfileActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_createProfileActionPerformed
+        // TODO add your handling code here:
+        createProfileFrame cpf = new createProfileFrame();
+        cpf.setVisible(true);
+    }//GEN-LAST:event_createProfileActionPerformed
 
     /**
      * @param args the command line arguments
