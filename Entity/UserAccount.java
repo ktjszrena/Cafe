@@ -20,6 +20,10 @@ public class UserAccount
     private String userInfo;
     private String checkpass;
 
+    public UserAccount(int userID){
+        this.userID = userID;
+    }
+    
     public UserAccount(String name, int userID, String password, String dob, String address, UserProfile userProfile, String scope)
     {
         this.name = name;
@@ -273,5 +277,18 @@ public class UserAccount
 
 
         return getUserInfo();
+    }
+
+    public boolean suspendAcc(int testID) {
+        testID = getUserID();
+        boolean x;
+        
+        
+        if (testID == 1)
+            x = true;
+        else
+            x = false;
+        
+        return x;
     }
 }
