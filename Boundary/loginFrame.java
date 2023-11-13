@@ -3,12 +3,27 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
 
+import java.util.ArrayList;
+import java.util.Objects;
+
 /**
  *
  * @author yuanc
  */
 public class loginFrame extends javax.swing.JFrame {
 
+    private String user;
+    private String scope;
+
+    public void setScope(String scope)
+    {
+        this.scope = scope;
+    }
+
+    public String getScope()
+    {
+        return scope;
+    }
     /**
      * Creates new form loginFrame
      */
@@ -17,6 +32,27 @@ public class loginFrame extends javax.swing.JFrame {
         setTitle("XXX CAFE LOGIN");
     }
 
+    public String loginUser()
+    {
+        loginUserAccountC lua = new loginUserAccountC();
+        lua.loginUserAccountC(Integer.parseInt(usernameTF.getText()), passwordTF.getText());
+        user = lua.getUserinfo();
+        System.out.println(user);
+
+        return user;
+    }
+
+    public String processUser()
+    {
+        String name = user.split(", ")[0];
+        String id = user.split(", ")[1];
+        String scope = user.split(", ")[2];
+        setScope(scope);
+        System.out.println("Name is " + name);
+        System.out.println("Id is " + id);
+        System.out.println("Scope is " + scope);
+        return user;
+    }
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -31,7 +67,6 @@ public class loginFrame extends javax.swing.JFrame {
         passwordLabel = new javax.swing.JLabel();
         passwordTF = new javax.swing.JTextField();
         loginButton = new javax.swing.JButton();
-        createAccountButton = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -58,12 +93,6 @@ public class loginFrame extends javax.swing.JFrame {
             }
         });
 
-        createAccountButton.setText("Create Account");
-        createAccountButton.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                createAccountButtonActionPerformed(evt);
-            }
-        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -87,7 +116,7 @@ public class loginFrame extends javax.swing.JFrame {
                     .addGroup(layout.createSequentialGroup()
                         .addGap(21, 21, 21)
                         .addComponent(loginButton))
-                    .addComponent(createAccountButton))
+                    )
                 .addGap(95, 95, 95))
         );
         layout.setVerticalGroup(
@@ -104,7 +133,6 @@ public class loginFrame extends javax.swing.JFrame {
                 .addGap(18, 18, 18)
                 .addComponent(loginButton)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(createAccountButton)
                 .addGap(49, 49, 49))
         );
 
@@ -120,43 +148,41 @@ public class loginFrame extends javax.swing.JFrame {
     }//GEN-LAST:event_passwordTFActionPerformed
 
     private void loginButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_loginButtonActionPerformed
+        loginUser();
         String x = "staff";
-        if (x.contains("staff")){
-            staffMain sm = new staffMain();
-            sm.show(); //Staff Display Page
-            
-            dispose();
+        if (!Objects.equals(user, "Invalid")) {
+            processUser();
+            if (scope.contains("Staff")) {
+                staffMain sm = new staffMain();
+                sm.show(); //Staff Display Page
+
+                dispose();
+            } else if (scope.contains("Manager")) {
+                managerMain mm = new managerMain();
+                mm.show(); //Manager Display Page
+
+                dispose();
+            } else if (scope.contains("Owner")) {
+                ownerMain om = new ownerMain();
+                om.show(); //Owner Display Page
+
+                dispose();
+            } else if (scope.contains("Admin")) {
+                adminMain am = new adminMain();
+                am.show();
+
+                dispose();
+            }
         }
-        
-        else if (x.contains("manager")){
-            managerMain mm = new managerMain();
-            mm.show(); //Manager Display Page
-            
-            dispose();
-        }
-        
-        else if (x.contains("owner")){
-            ownerMain om = new ownerMain();
-            om.show(); //Owner Display Page
-            
-            dispose();
-        }
-        else if (x.contains("admin")){
-            adminMain am = new adminMain();
-            am.show();
-            
-            dispose();
+        else
+        {
+            String msg = user;
+            new testFrame(msg).setVisible(true);
+            //setVisible(false);
         }
     }//GEN-LAST:event_loginButtonActionPerformed
 
-    private void createAccountButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_createAccountButtonActionPerformed
-        // TODO add your handling code here:
-        //Open createAccountFrame
-        createAccountFrame caf = new createAccountFrame();
-        caf.show(); //display createAccountFrame here
-        
-        dispose();
-    }//GEN-LAST:event_createAccountButtonActionPerformed
+
 
     /**
      * @param args the command line arguments
@@ -194,7 +220,7 @@ public class loginFrame extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton createAccountButton;
+
     private javax.swing.JButton loginButton;
     private javax.swing.JLabel passwordLabel;
     private javax.swing.JTextField passwordTF;

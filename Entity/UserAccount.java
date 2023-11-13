@@ -17,6 +17,8 @@ public class UserAccount
     private String scope;
     private String message;
     private boolean checkexist;
+    private String userInfo;
+    private String checkpass;
 
     public UserAccount(String name, int userID, String password, String dob, String address, UserProfile userProfile, String scope)
     {
@@ -95,6 +97,15 @@ public class UserAccount
     {
         return checkexist;
     }
+
+    public String getUserProfileS()
+    {
+        return userProfileS;
+    }
+    public String getUserInfo()
+    {
+        return userInfo;
+    }
     public void setName(String name)
     {
         this.name = name;
@@ -140,6 +151,14 @@ public class UserAccount
     public void setRset(ResultSet rset)
     {
         this.rset = rset;
+    }
+    public void setUserProfileS(String userProfileS)
+    {
+        this.userProfileS = userProfileS;
+    }
+    public void setUserInfo(String userInfo)
+    {
+        this.userInfo = userInfo;
     }
     private void connEx(String sql)
     {
@@ -189,6 +208,45 @@ public class UserAccount
         }
     }
 
+    private void connQueryLogin(String sql)
+    {
+        setSqlStatement(sql);
+        try (
+                Connection conn = DriverManager.getConnection(
+                        "jdbc:mysql://localhost:3306/staff","Admin","abcd"
+                );
+                Statement stmt = conn.createStatement();
+        )
+        {
+            System.out.println("The SQL statement is " + sql + "\n");
+            setRset(stmt.executeQuery(sql));
+            if (!rset.isBeforeFirst()) {
+                setUserInfo("Invalid");
+            }
+            else
+            {
+                rset.next();
+                checkpass = rset.getString("password");
+                if (Objects.equals(password, checkpass)) {
+                    setName(rset.getString("name"));
+                    setUserID(rset.getInt("id"));
+                    setUserProfileS(rset.getString("profile"));
+                    setUserInfo(getName() + ", " + getUserID() + ", " + getUserProfileS());
+                    //setMessage("Welcome back " + getName() + " " + getUserID() + " " + getUserProfileS());
+                } else {
+                    setUserInfo("Invalid");
+                    //setMessage("Login failed, please try again");
+                }
+            }
+            //this.message = "Success!";
+        }
+        catch(SQLException ex)
+        {
+            ex.printStackTrace();
+            this.message = "Operation Failed!";
+        }
+    }
+
     public String createUserAccount(String name, int userID, String password, String dob, String address, String userProfileName, String scope) {
         String sql = "insert into useraccount values ('" + name + "', " + userID + ", '" + password + "', '" + dob + "', '" + address + "', '" + userProfileName + "', '" + scope + "');";
         String check = "select 1 from useraccount where id = " + userID + ";";
@@ -208,11 +266,12 @@ public class UserAccount
         return getMessage();
     }
 
-    public boolean loginUserAccount(int userID, String password) throws SQLException {
-        String sql = "select * from useraccount where id = " + userID + "and 'password' = '" + password + "';";
+    public String loginUserAccount(int userID, String password) {
+        String sql = "select * from useraccount where id = " + userID + " and password = '" + password + "';";
         setSqlStatement(sql);
-        //connQu(sql);
-        String checkpass = rset.getString("password");
-        return Objects.equals(password, checkpass);
+        connQueryLogin(sql);
+
+
+        return getUserInfo();
     }
 }
