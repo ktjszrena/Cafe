@@ -42,6 +42,7 @@ public class ownerMain extends javax.swing.JFrame {
         jScrollPane1 = new javax.swing.JScrollPane();
         displayTextArea = new javax.swing.JTextArea();
         viewSlotsButton = new javax.swing.JButton();
+        logoutButton = new javax.swing.JButton();
         jMenuBar1 = new javax.swing.JMenuBar();
         jMenu1 = new javax.swing.JMenu();
         jMenu2 = new javax.swing.JMenu();
@@ -97,6 +98,13 @@ public class ownerMain extends javax.swing.JFrame {
             }
         });
 
+        logoutButton.setText("Logout");
+        logoutButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                logoutButtonActionPerformed(evt);
+            }
+        });
+
         jMenu1.setText("Slot Management");
         jMenuBar1.add(jMenu1);
         jMenuBar1.add(jMenu2);
@@ -135,7 +143,9 @@ public class ownerMain extends javax.swing.JFrame {
                                     .addComponent(jScrollPane1)))))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(147, 147, 147)
-                        .addComponent(viewSlotsButton)))
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(logoutButton)
+                            .addComponent(viewSlotsButton))))
                 .addContainerGap(37, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
@@ -164,7 +174,9 @@ public class ownerMain extends javax.swing.JFrame {
                         .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 128, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(viewSlotsButton)
-                .addContainerGap(27, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(logoutButton)
+                .addContainerGap())
         );
 
         pack();
@@ -198,6 +210,14 @@ public class ownerMain extends javax.swing.JFrame {
         // TODO add your handling code here:
         displayTextArea.setText("slots info from database");
     }//GEN-LAST:event_viewSlotsButtonActionPerformed
+
+    private void logoutButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_logoutButtonActionPerformed
+        // TODO add your handling code here:
+        loginUserAccountPg login = new loginUserAccountPg();
+        login.setVisible(true);
+        
+        dispose();
+    }//GEN-LAST:event_logoutButtonActionPerformed
 
     /**
      * @param args the command line arguments
@@ -243,6 +263,7 @@ public class ownerMain extends javax.swing.JFrame {
     private javax.swing.JMenu jMenu2;
     private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JButton logoutButton;
     private javax.swing.JButton slotCreateButton;
     private javax.swing.JButton slotsDeleteButton;
     private javax.swing.JButton slotsSearchButton;
