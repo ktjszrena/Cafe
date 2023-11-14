@@ -20,6 +20,12 @@ public class resultAccountPg extends javax.swing.JFrame {
        
     }
 
+    resultAccountPg(String msg) {
+        initComponents();
+        IDTextField.setText(msg);
+        IDTextField.setEditable(false);
+    }
+
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always

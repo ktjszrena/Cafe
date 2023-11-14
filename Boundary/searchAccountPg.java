@@ -19,6 +19,13 @@ public class searchAccountPg extends javax.swing.JFrame {
         initComponents();
         setTitle("Admin Account Search");
     }
+    
+    public String messageID(){
+        String ID;
+        ID = searchIDTF.getText();
+        
+        return ID;
+    }
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -109,9 +116,8 @@ public class searchAccountPg extends javax.swing.JFrame {
 
     private void modifyButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_modifyButtonActionPerformed
         // TODO add your handling code here:
-        
-        resultAccountPg rap = new resultAccountPg();
-        rap.setVisible(true);
+        String msg = messageID();
+        new resultAccountPg(msg).setVisible(true);
     }//GEN-LAST:event_modifyButtonActionPerformed
 
     /**
