@@ -41,3 +41,11 @@ insert into userprofile values ('Cafe Manager', 'Handles bids for slots', 'manag
 insert into userprofile values ('Cafe Owner', 'Manage work slots', 'owner');
 insert into userprofile values ('Cafe Staff', 'Bids for work slots', 'staff');
 insert into useraccount values ('John Doe', 1, 'johnpass', '28 Dec 1999', 'John Street', 'Cafe Staff', 'Chef');
+
+Suspend Acc table
+create table suspendacc (id int);
+describe suspendacc;
+
+Suspend Profile table
+create table suspendpro (role varchar(50));
+describe suspendpro;
