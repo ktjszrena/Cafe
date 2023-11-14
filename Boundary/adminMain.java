@@ -14,6 +14,7 @@ public class adminMain extends javax.swing.JFrame {
      */
     public adminMain() {
         initComponents();
+        setTitle("Admin Portal");
     }
 
     /**
@@ -25,205 +26,173 @@ public class adminMain extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jButton1 = new javax.swing.JButton();
-        jScrollPane1 = new javax.swing.JScrollPane();
-        adminConsol = new javax.swing.JTextArea();
+        logoutButton = new javax.swing.JButton();
+        accountSearchButton = new javax.swing.JButton();
+        accountViewButton = new javax.swing.JButton();
+        createAccountButton = new javax.swing.JButton();
+        searchProfileButton = new javax.swing.JButton();
+        viewProfileButton = new javax.swing.JButton();
+        createProfileButton = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
-        jLabel3 = new javax.swing.JLabel();
-        jLabel4 = new javax.swing.JLabel();
-        searchUsernameTF = new javax.swing.JTextField();
-        searchIDTF = new javax.swing.JTextField();
-        searchDOBTF = new javax.swing.JTextField();
-        searchAddressTF = new javax.swing.JTextField();
-        jMenuBar1 = new javax.swing.JMenuBar();
-        jMenu1 = new javax.swing.JMenu();
-        searchUser = new javax.swing.JMenuItem();
-        viewUser = new javax.swing.JMenuItem();
-        updateUser = new javax.swing.JMenuItem();
-        deleteUser = new javax.swing.JMenuItem();
-        createUser = new javax.swing.JMenuItem();
-        jMenu2 = new javax.swing.JMenu();
-        searchProfile = new javax.swing.JMenuItem();
-        viewProfile = new javax.swing.JMenuItem();
-        updateProfile = new javax.swing.JMenuItem();
-        deleteProfile = new javax.swing.JMenuItem();
-        createProfile = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        jButton1.setText("LOGOUT");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        logoutButton.setText("LOGOUT");
+        logoutButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                logoutButtonActionPerformed(evt);
             }
         });
 
-        adminConsol.setColumns(20);
-        adminConsol.setRows(5);
-        jScrollPane1.setViewportView(adminConsol);
-
-        jLabel1.setText("Username:");
-
-        jLabel2.setText("ID: ");
-
-        jLabel3.setText("Date of Birth:");
-
-        jLabel4.setText("Address:");
-
-        jMenu1.setText("Account Management");
-
-        searchUser.setText("Search User");
-        searchUser.addActionListener(new java.awt.event.ActionListener() {
+        accountSearchButton.setText("Search");
+        accountSearchButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                searchUserActionPerformed(evt);
+                accountSearchButtonActionPerformed(evt);
             }
         });
-        jMenu1.add(searchUser);
 
-        viewUser.setText("View User");
-        viewUser.addActionListener(new java.awt.event.ActionListener() {
+        accountViewButton.setText("View");
+        accountViewButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                viewUserActionPerformed(evt);
+                accountViewButtonActionPerformed(evt);
             }
         });
-        jMenu1.add(viewUser);
 
-        updateUser.setText("Update User");
-        jMenu1.add(updateUser);
-
-        deleteUser.setText("Delete User");
-        jMenu1.add(deleteUser);
-
-        createUser.setText("Create User");
-        createUser.addActionListener(new java.awt.event.ActionListener()
-        {
+        createAccountButton.setText("Create");
+        createAccountButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                createUserActionPerformed(evt);
+                createAccountButtonActionPerformed(evt);
             }
         });
-        jMenu1.add(createUser);
 
-        jMenuBar1.add(jMenu1);
-
-        jMenu2.setText("Profile Management");
-
-        searchProfile.setText("Search");
-        searchProfile.addActionListener(new java.awt.event.ActionListener() {
+        searchProfileButton.setText("Search");
+        searchProfileButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                searchProfileActionPerformed(evt);
+                searchProfileButtonActionPerformed(evt);
             }
         });
-        jMenu2.add(searchProfile);
 
-        viewProfile.setText("View");
-        jMenu2.add(viewProfile);
-
-        updateProfile.setText("Update");
-        jMenu2.add(updateProfile);
-
-        deleteProfile.setText("Delete");
-        jMenu2.add(deleteProfile);
-
-        createProfile.setText("Create");
-        createProfile.addActionListener(new java.awt.event.ActionListener()
-        {
+        viewProfileButton.setText("View");
+        viewProfileButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                createProfileActionPerformed(evt);
+                viewProfileButtonActionPerformed(evt);
             }
         });
-        jMenu2.add(createProfile);
 
-        jMenuBar1.add(jMenu2);
+        createProfileButton.setText("Create");
+        createProfileButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                createProfileButtonActionPerformed(evt);
+            }
+        });
 
-        setJMenuBar(jMenuBar1);
+        jLabel1.setText("Account Management");
+
+        jLabel2.setText("Profile Management");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
+                .addGap(57, 57, 57)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(240, 240, 240)
-                        .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 97, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(15, 15, 15)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 550, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(19, 19, 19)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addGroup(layout.createSequentialGroup()
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                    .addComponent(jLabel2)
-                                    .addComponent(jLabel1)
-                                    .addComponent(jLabel3)
-                                    .addComponent(jLabel4))
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                    .addComponent(searchUsernameTF, javax.swing.GroupLayout.DEFAULT_SIZE, 111, Short.MAX_VALUE)
-                                    .addComponent(searchIDTF)
-                                    .addComponent(searchDOBTF)
-                                    .addComponent(searchAddressTF))))))
-                .addContainerGap(19, Short.MAX_VALUE))
+                                .addComponent(createAccountButton)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(createProfileButton))
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                                .addComponent(accountViewButton)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(viewProfileButton))
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                                .addComponent(accountSearchButton)
+                                .addGap(172, 172, 172)
+                                .addComponent(searchProfileButton))))
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(jLabel1)
+                        .addGap(120, 120, 120)
+                        .addComponent(jLabel2)))
+                .addContainerGap(45, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(logoutButton)
+                .addGap(183, 183, 183))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addGap(17, 17, 17)
+                .addGap(30, 30, 30)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel1)
-                    .addComponent(searchUsernameTF, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jLabel2))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(accountSearchButton)
+                    .addComponent(searchProfileButton))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel2)
-                    .addComponent(searchIDTF, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(accountViewButton)
+                    .addComponent(viewProfileButton))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel3)
-                    .addComponent(searchDOBTF, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel4)
-                    .addComponent(searchAddressTF, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 226, Short.MAX_VALUE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(12, 12, 12))
+                    .addComponent(createAccountButton)
+                    .addComponent(createProfileButton))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(logoutButton)
+                .addContainerGap(32, Short.MAX_VALUE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+    private void logoutButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_logoutButtonActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jButton1ActionPerformed
-
-    private void searchUserActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_searchUserActionPerformed
-        // TODO add your handling code here:
-        adminConsol.setText("Searching user with name: " + searchUsernameTF.getText() + ", ID: " + searchIDTF.getText() + ", DOB: " + searchDOBTF.getText() + ", Address: " + searchAddressTF.getText());
+        loginUserAccountPg haha = new loginUserAccountPg();
+        haha.setVisible(true);
         
-    }//GEN-LAST:event_searchUserActionPerformed
+        dispose();
+    }//GEN-LAST:event_logoutButtonActionPerformed
 
-    private void searchProfileActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_searchProfileActionPerformed
+    private void accountSearchButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_accountSearchButtonActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_searchProfileActionPerformed
+        searchAccountPg hehe = new searchAccountPg();
+        hehe.setVisible(true);
+    }//GEN-LAST:event_accountSearchButtonActionPerformed
 
-    private void viewUserActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_viewUserActionPerformed
-        // TODO add your handling code here:
-        adminConsol.setText("Viewing all users.");
-    }//GEN-LAST:event_viewUserActionPerformed
-
-    private void createUserActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_createUserActionPerformed
+    private void createAccountButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_createAccountButtonActionPerformed
         // TODO add your handling code here:
         createAccountFrame caf = new createAccountFrame();
         caf.setVisible(true);
-    }//GEN-LAST:event_createUserActionPerformed
+    }//GEN-LAST:event_createAccountButtonActionPerformed
 
-    private void createProfileActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_createProfileActionPerformed
+    private void accountViewButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_accountViewButtonActionPerformed
+        // TODO add your handling code here:
+        viewUserAccountsPg hoho = new viewUserAccountsPg();
+        hoho.setVisible(true);
+    }//GEN-LAST:event_accountViewButtonActionPerformed
+
+    private void createProfileButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_createProfileButtonActionPerformed
         // TODO add your handling code here:
         createProfileFrame cpf = new createProfileFrame();
         cpf.setVisible(true);
-    }//GEN-LAST:event_createProfileActionPerformed
+    }//GEN-LAST:event_createProfileButtonActionPerformed
+
+    private void viewProfileButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_viewProfileButtonActionPerformed
+        // TODO add your handling code here:
+        viewUserProfilePg view = new viewUserProfilePg();
+        view.setVisible(true);
+    }//GEN-LAST:event_viewProfileButtonActionPerformed
+
+    private void searchProfileButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_searchProfileButtonActionPerformed
+        // TODO add your handling code here:
+        searchUserProfilePg searchUser = new searchUserProfilePg();
+        searchUser.setVisible(true);
+    }//GEN-LAST:event_searchProfileButtonActionPerformed
 
     /**
      * @param args the command line arguments
@@ -261,29 +230,14 @@ public class adminMain extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JTextArea adminConsol;
-    private javax.swing.JMenuItem createProfile;
-    private javax.swing.JMenuItem createUser;
-    private javax.swing.JMenuItem deleteProfile;
-    private javax.swing.JMenuItem deleteUser;
-    private javax.swing.JButton jButton1;
+    private javax.swing.JButton accountSearchButton;
+    private javax.swing.JButton accountViewButton;
+    private javax.swing.JButton createAccountButton;
+    private javax.swing.JButton createProfileButton;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel3;
-    private javax.swing.JLabel jLabel4;
-    private javax.swing.JMenu jMenu1;
-    private javax.swing.JMenu jMenu2;
-    private javax.swing.JMenuBar jMenuBar1;
-    private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTextField searchAddressTF;
-    private javax.swing.JTextField searchDOBTF;
-    private javax.swing.JTextField searchIDTF;
-    private javax.swing.JMenuItem searchProfile;
-    private javax.swing.JMenuItem searchUser;
-    private javax.swing.JTextField searchUsernameTF;
-    private javax.swing.JMenuItem updateProfile;
-    private javax.swing.JMenuItem updateUser;
-    private javax.swing.JMenuItem viewProfile;
-    private javax.swing.JMenuItem viewUser;
+    private javax.swing.JButton logoutButton;
+    private javax.swing.JButton searchProfileButton;
+    private javax.swing.JButton viewProfileButton;
     // End of variables declaration//GEN-END:variables
 }

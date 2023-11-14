@@ -3,7 +3,6 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
 
-import javax.swing.*;
 import java.util.ArrayList;
 
 /**
@@ -22,7 +21,6 @@ public class createAccountFrame extends javax.swing.JFrame {
         private String desc;
         private String perms;
         private String search;
-        private String record;
         ArrayList<String> profiles = new ArrayList<>();
 
         ArrayList<String> namelist = new ArrayList<>();
@@ -54,27 +52,28 @@ public class createAccountFrame extends javax.swing.JFrame {
             return search;
         }
 
-        public void setName(String name)
+        public void setName()
         {
             this.name = name;
         }
 
-        public void setPerms(String perms)
+        public void setPerms()
         {
             this.perms = perms;
         }
 
-        public void setDesc(String desc)
+        public void setDesc()
         {
             this.desc = desc;
         }
-        public void setSearch(String search)
+        public void setSearch()
         {
             this.search = search;
         }
 
         private String returnList(String search)
         {
+
             return "something";
         }
         //public ArrayList<String> getUserProfiles() //Should be getting from the SQL, not here
@@ -85,24 +84,11 @@ public class createAccountFrame extends javax.swing.JFrame {
         //    profiles.add("Cafe Staff, Bids for work slots, staff");
         //    return profiles;
         //}
-        public ArrayList<String> getNamelist() //Getting Profile List
+        public ArrayList<String> getNamelist() //Should be getting from the SQL, not here
         {
-            for (String profilelist : profiles)
+            for (String profile : profiles)
             {
-                String firstele = profilelist.split(",")[0];
-                if (firstele.contains(search))
-                {
-                    record = profilelist;
-                    setName(firstele);
-                    String rdesc = profilelist.split(", ")[1];
-                    setDesc(rdesc);
-                    String rperm = profilelist.split(", ")[2];
-                    setPerms(rperm);
-                    System.out.println("First ele is " + record);
-                    System.out.println("Name is " + getName());
-                    System.out.println("Desc is " + getDesc());
-                    System.out.println("Perm is " + getPerms());
-                }
+                String firstele = profile.split(",")[0];
                 System.out.println(firstele);
             }
             return namelist;
@@ -111,22 +97,17 @@ public class createAccountFrame extends javax.swing.JFrame {
     public createAccountFrame() {
         initComponents();
         setTitle("ACCOUNT CREATION");
-        //UserProfile a = new UserProfile("name here");
+        UserProfile a = new UserProfile("name here");
+
     }
     
     public String createAccountController(){
         String account;
         account = newUsernameTF.getText() + ", " + newPasswordTF.getText() + ", " +
-                userIDTF.getText() + ", " + dobTF.getText() + ", " +
-                addressTF.getText() + ", " + employeeTypeCB.getSelectedItem().toString() +
+                userIDTF.getText() + ", " + dobTF.getText() + ", " + 
+                addressTF.getText() + ", " + employeeTypeCB.getSelectedItem().toString() + 
                 ", " + positionCB.getSelectedItem().toString();
-        UserProfile UP = new UserProfile(employeeTypeCB.getSelectedItem().toString());
-        UP.getNamelist();
-        System.out.println("Selected profile is " + UP.search);
-        createUserAccountC CUA = new createUserAccountC();
-        CUA.createUserAccountC(newUsernameTF.getText(), Integer.parseInt(userIDTF.getText()), newPasswordTF.getText(),
-                dobTF.getText(), addressTF.getText(), UP.getName(), positionCB.getSelectedItem().toString());
-        return CUA.getMessage();
+        return account;
     }
 
     /**
@@ -155,10 +136,9 @@ public class createAccountFrame extends javax.swing.JFrame {
         employeeTypeCB = new javax.swing.JComboBox<>();
         employeeTypeLabel = new javax.swing.JLabel();
 
-        setDefaultCloseOperation(WindowConstants.DISPOSE_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-
-        newUsernameLabel.setText("New Username:");
+        newUsernameLabel.setText("New Name:");
 
         newUsernameTF.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -269,7 +249,7 @@ public class createAccountFrame extends javax.swing.JFrame {
                                 .addComponent(addressTF, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                                 .addComponent(newUsernameLabel)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                 .addComponent(newUsernameTF, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                                 .addComponent(userIDLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 53, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -282,7 +262,7 @@ public class createAccountFrame extends javax.swing.JFrame {
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addContainerGap()
                         .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(53, Short.MAX_VALUE))
+                .addContainerGap(55, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addGap(0, 0, Short.MAX_VALUE)
                 .addComponent(createAccountButton)
@@ -370,8 +350,6 @@ public class createAccountFrame extends javax.swing.JFrame {
         // TODO add your handling code here:
         String msg = createAccountController();
         new testFrame(msg).setVisible(true);
-        //adminMain am = new adminMain();
-        //am.show();
         setVisible(false);
     }//GEN-LAST:event_createAccountButtonActionPerformed
 
