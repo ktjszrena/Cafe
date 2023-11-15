@@ -51,5 +51,5 @@ create table suspendpro (role varchar(50));
 describe suspendpro;
 
 Work Slots table
-create table workslots (name varchar(50), date date);
+create table workslots (slots int, date date);
 describe workslots;
