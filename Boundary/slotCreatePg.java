@@ -36,6 +36,8 @@ public class slotCreatePg extends javax.swing.JFrame {
         jLabel2 = new javax.swing.JLabel();
         slotsTF = new javax.swing.JTextField();
         messageLabel = new javax.swing.JLabel();
+        jLabel3 = new javax.swing.JLabel();
+        roleComboBox = new javax.swing.JComboBox<>();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
@@ -56,6 +58,10 @@ public class slotCreatePg extends javax.swing.JFrame {
 
         jLabel2.setText("Slots:");
 
+        jLabel3.setText("Role:");
+
+        roleComboBox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Kitchen", "Waiter", "Cashier" }));
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -66,13 +72,16 @@ public class slotCreatePg extends javax.swing.JFrame {
                         .addGap(129, 129, 129)
                         .addComponent(jLabel1)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                    .addGroup(layout.createSequentialGroup()
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jLabel2)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(jLabel3)
+                            .addComponent(jLabel2))
                         .addGap(4, 4, 4)))
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(slotsTF, javax.swing.GroupLayout.DEFAULT_SIZE, 100, Short.MAX_VALUE)
-                    .addComponent(txtDate))
+                    .addComponent(slotsTF)
+                    .addComponent(txtDate)
+                    .addComponent(roleComboBox, 0, 100, Short.MAX_VALUE))
                 .addGap(138, 138, 138))
             .addGroup(layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -95,7 +104,11 @@ public class slotCreatePg extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel2)
                     .addComponent(slotsTF, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 38, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel3)
+                    .addComponent(roleComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
                 .addComponent(messageLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(createButton)
@@ -111,7 +124,7 @@ public class slotCreatePg extends javax.swing.JFrame {
 
     private void createButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_createButtonActionPerformed
         // TODO add your handling code here:
-        messageLabel.setText(slotsTF.getText() + " Slots created on: " + txtDate.getText());
+        messageLabel.setText(slotsTF.getText() + " " + roleComboBox.getSelectedItem() + " Slots created on: " + txtDate.getText());
     }//GEN-LAST:event_createButtonActionPerformed
 
     /**
@@ -153,7 +166,9 @@ public class slotCreatePg extends javax.swing.JFrame {
     private javax.swing.JButton createButton;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel messageLabel;
+    private javax.swing.JComboBox<String> roleComboBox;
     private javax.swing.JTextField slotsTF;
     private javax.swing.JTextField txtDate;
     // End of variables declaration//GEN-END:variables
