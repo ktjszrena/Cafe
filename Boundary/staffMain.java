@@ -30,13 +30,9 @@ public class staffMain extends javax.swing.JFrame {
     private void initComponents() {
 
         logoutButton = new javax.swing.JButton();
-        jMenuBar1 = new javax.swing.JMenuBar();
-        jMenu1 = new javax.swing.JMenu();
-        jMenu3 = new javax.swing.JMenu();
-        searchDayMenuItem = new javax.swing.JMenuItem();
-        jMenu4 = new javax.swing.JMenu();
-        slotViewMenuItem = new javax.swing.JMenuItem();
-        jMenu2 = new javax.swing.JMenu();
+        updateAccountButton = new javax.swing.JButton();
+        searchButton = new javax.swing.JButton();
+        viewButton = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -47,67 +43,60 @@ public class staffMain extends javax.swing.JFrame {
             }
         });
 
-        jMenu1.setText("Bid");
-        jMenuBar1.add(jMenu1);
-
-        jMenu3.setText("Search");
-
-        searchDayMenuItem.setText("Search Day");
-        searchDayMenuItem.addActionListener(new java.awt.event.ActionListener() {
+        updateAccountButton.setText("Update Account");
+        updateAccountButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                searchDayMenuItemActionPerformed(evt);
+                updateAccountButtonActionPerformed(evt);
             }
         });
-        jMenu3.add(searchDayMenuItem);
 
-        jMenuBar1.add(jMenu3);
-
-        jMenu4.setText("Slot View");
-
-        slotViewMenuItem.setText("View");
-        slotViewMenuItem.addActionListener(new java.awt.event.ActionListener() {
+        searchButton.setText("Search Day");
+        searchButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                slotViewMenuItemActionPerformed(evt);
+                searchButtonActionPerformed(evt);
             }
         });
-        jMenu4.add(slotViewMenuItem);
 
-        jMenuBar1.add(jMenu4);
-        jMenuBar1.add(jMenu2);
-
-        setJMenuBar(jMenuBar1);
+        viewButton.setText("View Slots");
+        viewButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                viewButtonActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(167, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(logoutButton)
                 .addGap(161, 161, 161))
+            .addGroup(layout.createSequentialGroup()
+                .addGap(58, 58, 58)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(viewButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(searchButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 114, Short.MAX_VALUE)
+                .addComponent(updateAccountButton)
+                .addGap(24, 24, 24))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(240, Short.MAX_VALUE)
+                .addGap(25, 25, 25)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(updateAccountButton)
+                    .addComponent(searchButton))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(viewButton)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 186, Short.MAX_VALUE)
                 .addComponent(logoutButton)
                 .addGap(14, 14, 14))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-
-    private void searchDayMenuItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_searchDayMenuItemActionPerformed
-        // TODO add your handling code here:
-        staffSearchDay ssd = new staffSearchDay();
-        ssd.setVisible(true);
-    }//GEN-LAST:event_searchDayMenuItemActionPerformed
-
-    private void slotViewMenuItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_slotViewMenuItemActionPerformed
-        // TODO add your handling code here:
-        staffSlotView ssv = new staffSlotView();
-        ssv.setVisible(true);
-    }//GEN-LAST:event_slotViewMenuItemActionPerformed
 
     private void logoutButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_logoutButtonActionPerformed
         // TODO add your handling code here:
@@ -116,6 +105,24 @@ public class staffMain extends javax.swing.JFrame {
         
         dispose();
     }//GEN-LAST:event_logoutButtonActionPerformed
+
+    private void updateAccountButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_updateAccountButtonActionPerformed
+        // TODO add your handling code here:
+        updateAccountPg updacc = new updateAccountPg();
+        updacc.setVisible(true);
+    }//GEN-LAST:event_updateAccountButtonActionPerformed
+
+    private void searchButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_searchButtonActionPerformed
+        // TODO add your handling code here:
+        staffSearchDay ssd = new staffSearchDay();
+        ssd.setVisible(true);
+    }//GEN-LAST:event_searchButtonActionPerformed
+
+    private void viewButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_viewButtonActionPerformed
+        // TODO add your handling code here:
+        staffSlotView ssv = new staffSlotView();
+        ssv.setVisible(true);
+    }//GEN-LAST:event_viewButtonActionPerformed
 
     /**
      * @param args the command line arguments
@@ -153,13 +160,9 @@ public class staffMain extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JMenu jMenu1;
-    private javax.swing.JMenu jMenu2;
-    private javax.swing.JMenu jMenu3;
-    private javax.swing.JMenu jMenu4;
-    private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JButton logoutButton;
-    private javax.swing.JMenuItem searchDayMenuItem;
-    private javax.swing.JMenuItem slotViewMenuItem;
+    private javax.swing.JButton searchButton;
+    private javax.swing.JButton updateAccountButton;
+    private javax.swing.JButton viewButton;
     // End of variables declaration//GEN-END:variables
 }

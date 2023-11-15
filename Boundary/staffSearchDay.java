@@ -80,7 +80,7 @@ public class staffSearchDay extends javax.swing.JFrame {
                     .addComponent(slotsResultLabel))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(searchButton)
-                .addContainerGap(224, Short.MAX_VALUE))
+                .addContainerGap(38, Short.MAX_VALUE))
         );
 
         pack();

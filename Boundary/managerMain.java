@@ -15,6 +15,7 @@ public class managerMain extends javax.swing.JFrame {
      */
     public managerMain() {
         initComponents();
+        setTitle("Manager Main Page");
     }
 
     /**
@@ -27,12 +28,11 @@ public class managerMain extends javax.swing.JFrame {
     private void initComponents() {
 
         logoutButton = new javax.swing.JButton();
+        updateAccountButton = new javax.swing.JButton();
+        availableButton = new javax.swing.JButton();
+        assignButton = new javax.swing.JButton();
+        slotsButton = new javax.swing.JButton();
         jMenuBar1 = new javax.swing.JMenuBar();
-        jMenu1 = new javax.swing.JMenu();
-        jMenu2 = new javax.swing.JMenu();
-        availableStaffMenuItem = new javax.swing.JMenuItem();
-        viewMenuItem = new javax.swing.JMenu();
-        jMenuItem1 = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -43,38 +43,33 @@ public class managerMain extends javax.swing.JFrame {
             }
         });
 
-        jMenu1.setText("Approve Bids");
-        jMenuBar1.add(jMenu1);
-
-        jMenu2.setText("Staff Management");
-
-        availableStaffMenuItem.setText("Available Staff");
-        availableStaffMenuItem.addActionListener(new java.awt.event.ActionListener() {
+        updateAccountButton.setText("Update Account");
+        updateAccountButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                availableStaffMenuItemActionPerformed(evt);
-            }
-        });
-        jMenu2.add(availableStaffMenuItem);
-
-        jMenuBar1.add(jMenu2);
-
-        viewMenuItem.setText("Slot View");
-        viewMenuItem.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                viewMenuItemActionPerformed(evt);
+                updateAccountButtonActionPerformed(evt);
             }
         });
 
-        jMenuItem1.setText("View");
-        jMenuItem1.addActionListener(new java.awt.event.ActionListener() {
+        availableButton.setText("Available Staff");
+        availableButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jMenuItem1ActionPerformed(evt);
+                availableButtonActionPerformed(evt);
             }
         });
-        viewMenuItem.add(jMenuItem1);
 
-        jMenuBar1.add(viewMenuItem);
+        assignButton.setText("Assign Staff");
+        assignButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                assignButtonActionPerformed(evt);
+            }
+        });
 
+        slotsButton.setText("Work Slots");
+        slotsButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                slotsButtonActionPerformed(evt);
+            }
+        });
         setJMenuBar(jMenuBar1);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -84,34 +79,36 @@ public class managerMain extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addGap(156, 156, 156)
                 .addComponent(logoutButton)
-                .addContainerGap(172, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap(42, Short.MAX_VALUE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                    .addComponent(slotsButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                        .addComponent(assignButton, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(availableButton, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                .addGap(100, 100, 100)
+                .addComponent(updateAccountButton)
+                .addGap(37, 37, 37))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(238, Short.MAX_VALUE)
+                .addGap(35, 35, 35)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(updateAccountButton)
+                    .addComponent(availableButton))
+                .addGap(12, 12, 12)
+                .addComponent(assignButton, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(slotsButton)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 132, Short.MAX_VALUE)
                 .addComponent(logoutButton)
                 .addGap(16, 16, 16))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-
-    private void availableStaffMenuItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_availableStaffMenuItemActionPerformed
-        // TODO add your handling code here:
-        availableStaff aS = new availableStaff();
-        aS.setVisible(true);
-    }//GEN-LAST:event_availableStaffMenuItemActionPerformed
-
-    private void viewMenuItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_viewMenuItemActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_viewMenuItemActionPerformed
-
-    private void jMenuItem1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem1ActionPerformed
-        // TODO add your handling code here:
-        managerSlotView msv = new managerSlotView();
-        msv.setVisible(true);
-    }//GEN-LAST:event_jMenuItem1ActionPerformed
 
     private void logoutButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_logoutButtonActionPerformed
         // TODO add your handling code here:
@@ -120,6 +117,30 @@ public class managerMain extends javax.swing.JFrame {
         
         dispose();
     }//GEN-LAST:event_logoutButtonActionPerformed
+
+    private void updateAccountButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_updateAccountButtonActionPerformed
+        // TODO add your handling code here:
+        updateAccountPg updacc = new updateAccountPg();
+        updacc.setVisible(true);
+    }//GEN-LAST:event_updateAccountButtonActionPerformed
+
+    private void availableButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_availableButtonActionPerformed
+        // TODO add your handling code here:
+        availableStaff as = new availableStaff();
+        as.setVisible(true);
+    }//GEN-LAST:event_availableButtonActionPerformed
+
+    private void assignButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_assignButtonActionPerformed
+        // TODO add your handling code here:
+        assignStaffPg assign = new assignStaffPg();
+        assign.setVisible(true);
+    }//GEN-LAST:event_assignButtonActionPerformed
+
+    private void slotsButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_slotsButtonActionPerformed
+        // TODO add your handling code here:
+        managerSlotView msv = new managerSlotView();
+        msv.setVisible(true);
+    }//GEN-LAST:event_slotsButtonActionPerformed
 
     /**
      * @param args the command line arguments
@@ -157,12 +178,11 @@ public class managerMain extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JMenuItem availableStaffMenuItem;
-    private javax.swing.JMenu jMenu1;
-    private javax.swing.JMenu jMenu2;
+    private javax.swing.JButton assignButton;
+    private javax.swing.JButton availableButton;
     private javax.swing.JMenuBar jMenuBar1;
-    private javax.swing.JMenuItem jMenuItem1;
     private javax.swing.JButton logoutButton;
-    private javax.swing.JMenu viewMenuItem;
+    private javax.swing.JButton slotsButton;
+    private javax.swing.JButton updateAccountButton;
     // End of variables declaration//GEN-END:variables
 }
