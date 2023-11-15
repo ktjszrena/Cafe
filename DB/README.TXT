@@ -51,5 +51,5 @@ create table suspendpro (role varchar(50));
 describe suspendpro;
 
 Work Slots table
-create table workslots (slots int, date date);
+create table workslots (string role, slots int, date date);
 describe workslots;
