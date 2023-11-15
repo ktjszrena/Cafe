@@ -2,23 +2,18 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
-import com.formdev.flatlaf.FlatIntelliJLaf;
-import com.raven.datechooser.DateChooser;
+
 /**
  *
  * @author yuanc
  */
-public class ownerSlotPg extends javax.swing.JFrame {
-
-    private DateChooser chDate = new DateChooser();
-    
+public class ownerSlotPg extends javax.swing.JFrame {    
     /**
      * Creates new form ownerSlotPg
      */
     public ownerSlotPg() {
         initComponents();
         setTitle("Slot Management");
-        chDate.setTextField(txtDate);
     }
 
     /**
@@ -30,26 +25,14 @@ public class ownerSlotPg extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        txtDate = new javax.swing.JTextField();
         viewSlotsButton = new javax.swing.JButton();
-        jLabel1 = new javax.swing.JLabel();
-        jLabel2 = new javax.swing.JLabel();
-        slotsTF = new javax.swing.JTextField();
         slotCreateButton = new javax.swing.JButton();
-        creationLabel = new javax.swing.JLabel();
         slotsUpdateButton = new javax.swing.JButton();
         slotsDeleteButton = new javax.swing.JButton();
         slotsSearchButton = new javax.swing.JButton();
-        jScrollPane1 = new javax.swing.JScrollPane();
-        displayTextArea = new javax.swing.JTextArea();
+        jLabel1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
-
-        txtDate.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtDateActionPerformed(evt);
-            }
-        });
 
         viewSlotsButton.setText("View all");
         viewSlotsButton.addActionListener(new java.awt.event.ActionListener() {
@@ -57,10 +40,6 @@ public class ownerSlotPg extends javax.swing.JFrame {
                 viewSlotsButtonActionPerformed(evt);
             }
         });
-
-        jLabel1.setText("Date:");
-
-        jLabel2.setText("Slots:");
 
         slotCreateButton.setText("Create");
         slotCreateButton.addActionListener(new java.awt.event.ActionListener() {
@@ -90,9 +69,7 @@ public class ownerSlotPg extends javax.swing.JFrame {
             }
         });
 
-        displayTextArea.setColumns(20);
-        displayTextArea.setRows(5);
-        jScrollPane1.setViewportView(displayTextArea);
+        jLabel1.setText("Slots");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -101,92 +78,69 @@ public class ownerSlotPg extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(32, 32, 32)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(layout.createSequentialGroup()
+                        .addGap(91, 91, 91)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(slotsSearchButton)
+                            .addComponent(slotsDeleteButton)
+                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                    .addComponent(jLabel2)
-                                    .addComponent(jLabel1))
-                                .addGap(18, 18, 18)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                    .addComponent(slotsTF)
-                                    .addComponent(txtDate, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                            .addGroup(layout.createSequentialGroup()
-                                .addGap(12, 12, 12)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                    .addGroup(layout.createSequentialGroup()
-                                        .addComponent(slotCreateButton)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                        .addComponent(slotsUpdateButton)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                        .addComponent(slotsDeleteButton)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                        .addComponent(slotsSearchButton))
-                                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 306, javax.swing.GroupLayout.PREFERRED_SIZE)))))
+                                    .addComponent(slotCreateButton)
+                                    .addComponent(slotsUpdateButton))
+                                .addComponent(viewSlotsButton))))
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(161, 161, 161)
-                        .addComponent(viewSlotsButton))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(76, 76, 76)
-                        .addComponent(creationLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 237, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(50, Short.MAX_VALUE))
+                        .addGap(114, 114, 114)
+                        .addComponent(jLabel1)))
+                .addContainerGap(101, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(23, 23, 23)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(txtDate, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel1))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel2)
-                    .addComponent(slotsTF, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap(28, Short.MAX_VALUE)
+                .addComponent(jLabel1)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(slotCreateButton)
-                    .addComponent(slotsUpdateButton)
-                    .addComponent(slotsDeleteButton)
-                    .addComponent(slotsSearchButton))
+                .addComponent(slotCreateButton)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 128, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(slotsUpdateButton)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(creationLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 54, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
+                .addComponent(slotsDeleteButton)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(slotsSearchButton)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(viewSlotsButton)
-                .addContainerGap(15, Short.MAX_VALUE))
+                .addGap(54, 54, 54))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void txtDateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtDateActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txtDateActionPerformed
-
     private void viewSlotsButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_viewSlotsButtonActionPerformed
         // TODO add your handling code here:
-        displayTextArea.setText("slots info from database");
+        slotViewPg view = new slotViewPg();
+        view.setVisible(true);
     }//GEN-LAST:event_viewSlotsButtonActionPerformed
 
     private void slotCreateButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_slotCreateButtonActionPerformed
         // TODO add your handling code here:
-        creationLabel.setText(slotsTF.getText() + " slots created on " + txtDate.getText());
+        slotCreatePg create = new slotCreatePg();
+        create.setVisible(true);
     }//GEN-LAST:event_slotCreateButtonActionPerformed
 
     private void slotsUpdateButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_slotsUpdateButtonActionPerformed
         // TODO add your handling code here:
-        creationLabel.setText(slotsTF.getText() + " slots updated on " + txtDate.getText());
+        slotUpdatePg update = new slotUpdatePg();
+        update.setVisible(true);
     }//GEN-LAST:event_slotsUpdateButtonActionPerformed
 
     private void slotsDeleteButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_slotsDeleteButtonActionPerformed
         // TODO add your handling code here:
-        creationLabel.setText(slotsTF.getText() + " slots deleted on " + txtDate.getText());
+        slotDeletePg delete = new slotDeletePg();
+        delete.setVisible(true);
     }//GEN-LAST:event_slotsDeleteButtonActionPerformed
 
     private void slotsSearchButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_slotsSearchButtonActionPerformed
         // TODO add your handling code here:
-        creationLabel.setText("Searching for slots on: " + txtDate.getText());
+        slotSearchPg search = new slotSearchPg();
+        search.setVisible(true);
     }//GEN-LAST:event_slotsSearchButtonActionPerformed
 
     /**
@@ -225,17 +179,11 @@ public class ownerSlotPg extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JLabel creationLabel;
-    private javax.swing.JTextArea displayTextArea;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel2;
-    private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JButton slotCreateButton;
     private javax.swing.JButton slotsDeleteButton;
     private javax.swing.JButton slotsSearchButton;
-    private javax.swing.JTextField slotsTF;
     private javax.swing.JButton slotsUpdateButton;
-    private javax.swing.JTextField txtDate;
     private javax.swing.JButton viewSlotsButton;
     // End of variables declaration//GEN-END:variables
 }
