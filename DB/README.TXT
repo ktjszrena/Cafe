@@ -49,3 +49,7 @@ describe suspendacc;
 Suspend Profile table
 create table suspendpro (role varchar(50));
 describe suspendpro;
+
+Work Slots table
+create table workslots (name varchar(50), date date);
+describe workslots;
