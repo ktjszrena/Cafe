@@ -54,6 +54,6 @@ Work Slots table
 create table workslots (role varchar(50), slots int, date date);
 describe workslots;
 
-Staff Shift Table
-create table staffshift (role varchar(50), id int, days varchar(30));
-describe staffshift;
+Staff Available Table
+create table staffavail (role varchar(50), id int, days varchar(30));
+describe staffavail;
