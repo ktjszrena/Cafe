@@ -63,5 +63,5 @@ create table staffshift (date date, role varchar(50), id int, approve bit);
 describe staffshift;
 
 Part and Full Time table
-create table pttable (date date, pt int, ft int);
-describe pttable;
+create table pftable (date date, pt int, ft int);
+describe pftable;
