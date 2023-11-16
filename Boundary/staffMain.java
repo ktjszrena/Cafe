@@ -153,6 +153,8 @@ public class staffMain extends javax.swing.JFrame {
 
     private void declareButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_declareButtonActionPerformed
         // TODO add your handling code here:
+        staffDeclarePg declare = new staffDeclarePg();
+        declare.setVisible(true);
     }//GEN-LAST:event_declareButtonActionPerformed
 
     /**
