@@ -33,6 +33,7 @@ public class managerMain extends javax.swing.JFrame {
         assignButton = new javax.swing.JButton();
         slotsButton = new javax.swing.JButton();
         indicateButton = new javax.swing.JButton();
+        bidButton = new javax.swing.JButton();
         jMenuBar1 = new javax.swing.JMenuBar();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -73,6 +74,18 @@ public class managerMain extends javax.swing.JFrame {
         });
 
         indicateButton.setText("FT / PT");
+        indicateButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                indicateButtonActionPerformed(evt);
+            }
+        });
+
+        bidButton.setText("Bidding");
+        bidButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                bidButtonActionPerformed(evt);
+            }
+        });
         setJMenuBar(jMenuBar1);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -91,7 +104,8 @@ public class managerMain extends javax.swing.JFrame {
                             .addComponent(slotsButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(assignButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(availableButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(indicateButton, javax.swing.GroupLayout.PREFERRED_SIZE, 116, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                            .addComponent(indicateButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(bidButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
                 .addContainerGap(150, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
@@ -106,8 +120,10 @@ public class managerMain extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(indicateButton)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(bidButton)
+                .addGap(5, 5, 5)
                 .addComponent(updateAccountButton)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 79, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 51, Short.MAX_VALUE)
                 .addComponent(logoutButton)
                 .addGap(16, 16, 16))
         );
@@ -147,6 +163,18 @@ public class managerMain extends javax.swing.JFrame {
         msv.setVisible(true);
     }//GEN-LAST:event_slotsButtonActionPerformed
 
+    private void bidButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bidButtonActionPerformed
+        // TODO add your handling code here:
+        managerBiddingPg bidding = new managerBiddingPg();
+        bidding.setVisible(true);
+    }//GEN-LAST:event_bidButtonActionPerformed
+
+    private void indicateButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_indicateButtonActionPerformed
+        // TODO add your handling code here:
+        managerIndicatePg indicate = new managerIndicatePg();
+        indicate.setVisible(true);
+    }//GEN-LAST:event_indicateButtonActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -185,6 +213,7 @@ public class managerMain extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton assignButton;
     private javax.swing.JButton availableButton;
+    private javax.swing.JButton bidButton;
     private javax.swing.JButton indicateButton;
     private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JButton logoutButton;
