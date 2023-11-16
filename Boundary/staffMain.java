@@ -33,6 +33,8 @@ public class staffMain extends javax.swing.JFrame {
         updateAccountButton = new javax.swing.JButton();
         searchButton = new javax.swing.JButton();
         viewButton = new javax.swing.JButton();
+        declareButton = new javax.swing.JButton();
+        viewAllButton = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -64,6 +66,20 @@ public class staffMain extends javax.swing.JFrame {
             }
         });
 
+        declareButton.setText("Declare Availability");
+        declareButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                declareButtonActionPerformed(evt);
+            }
+        });
+
+        viewAllButton.setText("View All Slots");
+        viewAllButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                viewAllButtonActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -73,24 +89,29 @@ public class staffMain extends javax.swing.JFrame {
                 .addComponent(logoutButton)
                 .addGap(161, 161, 161))
             .addGroup(layout.createSequentialGroup()
-                .addGap(58, 58, 58)
+                .addGap(134, 134, 134)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(declareButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(viewButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(searchButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 114, Short.MAX_VALUE)
-                .addComponent(updateAccountButton)
-                .addGap(24, 24, 24))
+                    .addComponent(searchButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(updateAccountButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(viewAllButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(136, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addGap(25, 25, 25)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(updateAccountButton)
-                    .addComponent(searchButton))
+                .addGap(46, 46, 46)
+                .addComponent(searchButton)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(viewButton)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 186, Short.MAX_VALUE)
+                .addGap(4, 4, 4)
+                .addComponent(viewAllButton)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(declareButton)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(updateAccountButton)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 80, Short.MAX_VALUE)
                 .addComponent(logoutButton)
                 .addGap(14, 14, 14))
         );
@@ -123,6 +144,16 @@ public class staffMain extends javax.swing.JFrame {
         staffSlotView ssv = new staffSlotView();
         ssv.setVisible(true);
     }//GEN-LAST:event_viewButtonActionPerformed
+
+    private void viewAllButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_viewAllButtonActionPerformed
+        // TODO add your handling code here:
+        staffViewAllSlotPg viewAll = new staffViewAllSlotPg();
+        viewAll.setVisible(true);
+    }//GEN-LAST:event_viewAllButtonActionPerformed
+
+    private void declareButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_declareButtonActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_declareButtonActionPerformed
 
     /**
      * @param args the command line arguments
@@ -160,9 +191,11 @@ public class staffMain extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton declareButton;
     private javax.swing.JButton logoutButton;
     private javax.swing.JButton searchButton;
     private javax.swing.JButton updateAccountButton;
+    private javax.swing.JButton viewAllButton;
     private javax.swing.JButton viewButton;
     // End of variables declaration//GEN-END:variables
 }
