@@ -26,13 +26,12 @@ public class staffBidsMenuPg extends javax.swing.JFrame {
         initComponents();
         setTitle("Staff Bidding Menu");
     }
-    public staffBidsMenuPg(String role, String id) {
+    public staffBidsMenuPg(String id, String role) {
         initComponents();
         setTitle("Staff Bidding Menu");
         setId(id);
         setRole(role);
     }
-
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -98,19 +97,19 @@ public class staffBidsMenuPg extends javax.swing.JFrame {
 
     private void bidButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bidButtonActionPerformed
         // TODO add your handling code here:
-        staffBidSlotPg bidSlot = new staffBidSlotPg();
+        staffBidSlotPg bidSlot = new staffBidSlotPg(id, role);
         bidSlot.setVisible(true);
     }//GEN-LAST:event_bidButtonActionPerformed
 
     private void pendingButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_pendingButtonActionPerformed
         // TODO add your handling code here:
-        staffBidPendingPg pending = new staffBidPendingPg();
+        staffBidPendingPg pending = new staffBidPendingPg(id);
         pending.setVisible(true);
     }//GEN-LAST:event_pendingButtonActionPerformed
 
     private void swapButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_swapButtonActionPerformed
         // TODO add your handling code here:
-        staffBidSwapPg swap = new staffBidSwapPg();
+        staffBidSwapPg swap = new staffBidSwapPg(id);
         swap.setVisible(true);
     }//GEN-LAST:event_swapButtonActionPerformed
 

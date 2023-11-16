@@ -3,6 +3,8 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
 
+import java.util.ArrayList;
+
 /**
  *
  * @author yuanc
@@ -12,10 +14,21 @@ public class staffBidPendingPg extends javax.swing.JFrame {
     /**
      * Creates new form staffBidPendingPg
      */
+    private String id;
+    public void setId(String id)
+    {
+        this.id = id;
+    }
     public staffBidPendingPg() {
         initComponents();
         setTitle("Staff Pending Bids");
         displayTextArea.setEditable(false);
+    }
+    public staffBidPendingPg(String id) {
+        initComponents();
+        setTitle("Staff Pending Bids");
+        displayTextArea.setEditable(false);
+        setId(id);
     }
 
     /**
@@ -72,7 +85,13 @@ public class staffBidPendingPg extends javax.swing.JFrame {
 
     private void viewButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_viewButtonActionPerformed
         // TODO add your handling code here:
-        displayTextArea.setText("Displaying all your bids...");
+        //displayTextArea.setText("Displaying all your bids...");
+        viewSlotsStatusC vssC = new viewSlotsStatusC();
+        ArrayList<String> workSlots = vssC.retrieveSlots(Integer.parseInt(id));
+        for (int i=0; i<workSlots.size(); i++) {
+            displayTextArea.append(workSlots.get(i));
+            //    System.out.println(accounts.get(i));
+        }
     }//GEN-LAST:event_viewButtonActionPerformed
 
     /**

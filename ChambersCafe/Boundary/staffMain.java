@@ -180,7 +180,7 @@ public class staffMain extends javax.swing.JFrame {
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
-        staffBidsMenuPg bidMenu = new staffBidsMenuPg();
+        staffBidsMenuPg bidMenu = new staffBidsMenuPg(id, role);
         bidMenu.setVisible(true);
     }//GEN-LAST:event_jButton1ActionPerformed
 

@@ -3,12 +3,23 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
 
+import java.util.ArrayList;
+
 /**
  *
  * @author yuanc
  */
 public class staffBidSlotPg extends javax.swing.JFrame {
-
+    private String role;
+    private String id;
+    public void setId(String id)
+    {
+        this.id = id;
+    }
+    public void setRole(String role)
+    {
+        this.role = role;
+    }
     /**
      * Creates new form staffBidSlotPg
      */
@@ -16,6 +27,14 @@ public class staffBidSlotPg extends javax.swing.JFrame {
         initComponents();
         setTitle("Staff Slot Bidding");
         displayTextArea.setEditable(false);
+    }
+
+    public staffBidSlotPg(String id, String role) {
+        initComponents();
+        setTitle("Staff Slot Bidding");
+        displayTextArea.setEditable(false);
+        setId(id);
+        setRole(role);
     }
 
     /**
@@ -109,13 +128,35 @@ public class staffBidSlotPg extends javax.swing.JFrame {
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
-        displayTextArea.setText("Displaying Available Slots...");
-        slotsComboBox.addItem("Populate comboBox");
+        //displayTextArea.setText("Displaying Available Slots...");
+        displayTextArea.removeAll();
+        slotsComboBox.removeAllItems();
+        bidForWorkSlotC bfwsC = new bidForWorkSlotC();
+        ArrayList<String> workslots = bfwsC.getSlots();
+        for (int i=0; i<workslots.size(); i++) {
+            if (workslots.get(i).contains(role)) {
+                displayTextArea.append(workslots.get(i) + "\n");
+                slotsComboBox.addItem(workslots.get(i));
+            }
+            //    System.out.println(accounts.get(i));
+        }
+
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void applyButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_applyButtonActionPerformed
         // TODO add your handling code here:
-        messageLabel.setText(slotsComboBox.getSelectedItem() + " is applied successfully.");
+
+        bidForWorkSlotC bfwsc = new bidForWorkSlotC();
+        String edit = slotsComboBox.getSelectedItem().toString();
+        String date = edit.split(", ")[2];
+        String id = edit.split(", ")[1];
+        String role = edit.split(", ")[0];
+        //System.out.println(role);
+        boolean validateBid = bfwsc.bid(date, Integer.parseInt(id), role);
+        if (validateBid)
+        {
+            messageLabel.setText(slotsComboBox.getSelectedItem() + " is applied successfully.");
+        }
     }//GEN-LAST:event_applyButtonActionPerformed
 
     /**

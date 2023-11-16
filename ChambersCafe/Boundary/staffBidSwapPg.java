@@ -3,6 +3,8 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
 
+import java.util.ArrayList;
+
 /**
  *
  * @author yuanc
@@ -12,9 +14,19 @@ public class staffBidSwapPg extends javax.swing.JFrame {
     /**
      * Creates new form staffBidSwapPg
      */
+    private String id;
+    public void setId(String id)
+    {
+        this.id = id;
+    }
     public staffBidSwapPg() {
         initComponents();
         setTitle("Staff Bid Swapping");
+    }
+    public staffBidSwapPg(String id) {
+        initComponents();
+        setTitle("Staff Bid Swapping");
+        setId(id);
     }
 
     /**
@@ -102,11 +114,29 @@ public class staffBidSwapPg extends javax.swing.JFrame {
 
     private void viewBidsButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_viewBidsButtonActionPerformed
         // TODO add your handling code here:
-        approvedComboBox.addItem("Bid 1");
+        approvedComboBox.removeAllItems();
+        //approvedComboBox.addItem("Bid 1");
+        viewSlotsStatusC vssC = new viewSlotsStatusC();
+        ArrayList<String> workSlots = vssC.retrieveSlotsA(Integer.parseInt(id));
+        for (int i=0; i<workSlots.size(); i++) {
+            approvedComboBox.addItem(workSlots.get(i));
+            //    System.out.println(accounts.get(i));
+        }
     }//GEN-LAST:event_viewBidsButtonActionPerformed
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
         // TODO add your handling code here:
+        String edit = approvedComboBox.getSelectedItem().toString();
+
+        String Pdate = edit.split(": ")[1];
+        String date = Pdate.split(" ")[0];
+        String Prole = edit.split(": ")[2];
+        String role = Prole.split(" ")[0];
+        String Pid = edit.split(": ")[3];
+        String id = Pid.split(" ")[0];
+        //System.out.println(date + " " + role + " " + id);
+        swapShiftC ssC = new swapShiftC();
+        boolean isSuccessful = ssC.swapShift(Integer.parseInt(id), date);
         messageLabel.setText(approvedComboBox.getSelectedItem() + " is put out for swap.");
     }//GEN-LAST:event_jButton3ActionPerformed
 
