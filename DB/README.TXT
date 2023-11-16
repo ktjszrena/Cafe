@@ -57,3 +57,7 @@ describe workslots;
 Staff Available Table
 create table staffavail (role varchar(50), id int, days varchar(30));
 describe staffavail;
+
+Staff Shift Table
+create table staffshift (date date, role varchar(50), id int, approve bit);
+describe staffshift;
