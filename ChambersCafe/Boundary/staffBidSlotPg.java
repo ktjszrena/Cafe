@@ -149,7 +149,7 @@ public class staffBidSlotPg extends javax.swing.JFrame {
         bidForWorkSlotC bfwsc = new bidForWorkSlotC();
         String edit = slotsComboBox.getSelectedItem().toString();
         String date = edit.split(", ")[2];
-        String id = edit.split(", ")[1];
+        String ids = edit.split(", ")[1];
         String role = edit.split(", ")[0];
         //System.out.println(role);
         boolean validateBid = bfwsc.bid(date, Integer.parseInt(id), role);

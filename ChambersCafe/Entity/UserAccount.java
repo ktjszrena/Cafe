@@ -351,6 +351,7 @@ public class UserAccount
             }
             else {
                 isSuspended = true;
+                setUserInfo("Suspended");
             }
             //this.message = "Success!";
         }
@@ -378,6 +379,7 @@ public class UserAccount
                 int r = stmt.executeUpdate(sql2);
                 System.out.println("Total number of records Inserted = " + r);
                 isSuspended = true;
+
             }
             else {
                 String sql2 = "delete from suspendacc where id = " + sUserId + ";";
@@ -413,16 +415,17 @@ public class UserAccount
     }
 
     public String loginUserAccount(int userID, String password) {
-        String sql = "select * from useraccount where id = " + userID + " and password = '" + password + "';";
-        setSqlStatement(sql);
-        connQueryLogin(sql);
-        sql = "select * from suspendacc where id = " + userID + ";";
+        String sql = "select * from suspendacc where id = " + userID + ";";
         connQuerySuspend(sql);
-        UserProfile up = new UserProfile();
-        isSuspended = up.checkSuspendedProfile(getUserProfileS());
-        if (isSuspended)
-        {
-            setUserInfo("Suspended");
+        if (!isSuspended) {
+            sql = "select * from useraccount where id = " + userID + " and password = '" + password + "';";
+            setSqlStatement(sql);
+            connQueryLogin(sql);
+            UserProfile up = new UserProfile();
+            boolean isSuspend = up.checkSuspendedProfile(getUserProfileS());
+            if (isSuspend) {
+                setUserInfo("Suspended");
+            }
         }
         return getUserInfo();
     }

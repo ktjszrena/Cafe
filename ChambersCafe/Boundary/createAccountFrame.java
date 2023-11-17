@@ -89,7 +89,8 @@ public class createAccountFrame extends javax.swing.JFrame {
         {
             for (String profilelist : profiles)
             {
-                String firstele = profilelist.split(",")[0];
+                String firstele = profilelist.split(": ")[0];
+                System.out.println(" > " + firstele + " < firstele");
                 if (firstele.contains(search))
                 {
                     record = profilelist;
@@ -120,12 +121,13 @@ public class createAccountFrame extends javax.swing.JFrame {
                 userIDTF.getText() + ", " + dobTF.getText() + ", " +
                 addressTF.getText() + ", " + employeeTypeCB.getSelectedItem().toString() +
                 ", " + positionCB.getSelectedItem().toString();
+        System.out.println(account);
         UserProfile UP = new UserProfile(employeeTypeCB.getSelectedItem().toString());
         UP.getNamelist();
         System.out.println("Selected profile is " + UP.search);
         createUserAccountC CUA = new createUserAccountC();
         CUA.createUserAccountC(newUsernameTF.getText(), Integer.parseInt(userIDTF.getText()), newPasswordTF.getText(),
-                dobTF.getText(), addressTF.getText(), UP.getName(), positionCB.getSelectedItem().toString());
+                dobTF.getText(), addressTF.getText(), UP.search, positionCB.getSelectedItem().toString());
         return CUA.getMessage();
     }
 
@@ -208,9 +210,9 @@ public class createAccountFrame extends javax.swing.JFrame {
 
         positionLabel.setText("Position");
 
-        positionCB.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Waiter", "Cashier", "Kitchen" }));
+        positionCB.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Waiter", "Cashier", "Chef" }));
 
-        employeeTypeCB.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Staff", "Manager", "Owner", "Admin" }));
+        employeeTypeCB.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Cafe Staff", "Cafe Manager", "Cafe Owner", "System Admin" }));
         employeeTypeCB.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 employeeTypeCBActionPerformed(evt);
@@ -345,7 +347,7 @@ public class createAccountFrame extends javax.swing.JFrame {
             positionCB.removeAllItems();
             positionCB.addItem("Waiter");
             positionCB.addItem("Cashier");
-            positionCB.addItem("Kitchen");
+            positionCB.addItem("Chef");
             positionCB.setEnabled(true);
         }
         else if (selectedValue.contains("Admin")){

@@ -40,8 +40,7 @@ public class loginUserAccountPg extends javax.swing.JFrame {
     public String loginUser()
     {
         loginUserAccountC lua = new loginUserAccountC();
-        lua.loginUserAccountC(Integer.parseInt(usernameTF.getText()), passwordTF.getText());
-        user = lua.getUserinfo();
+        user = lua.loginUserAccountC(Integer.parseInt(usernameTF.getText()), passwordTF.getText());
         System.out.println(user);
         return user;
     }
@@ -156,8 +155,8 @@ public class loginUserAccountPg extends javax.swing.JFrame {
     private void loginButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_loginButtonActionPerformed
         loginUser();
         String x = "staff";
-
-        if (user == "Suspended")
+        System.out.println(user);
+        if (Objects.equals(user, "Suspended"))
         {
             String msg = "Your account has been suspended";
             //System.out.println(msg);

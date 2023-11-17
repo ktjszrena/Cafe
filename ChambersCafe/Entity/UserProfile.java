@@ -115,8 +115,8 @@ public class UserProfile
             setRset(stmt.executeQuery(sql));
 
             while (rset.next()) {
-                userProfileDetails.add("Role: " + rset.getString("Role") + "\nDescription: " + rset.getString("description")
-                        + "\nPermission: " + rset.getString("permission") + "\n\n");
+                userProfileDetails.add("Role: " + rset.getString("Role") + "\n Description: " + rset.getString("description")
+                        + " \nPermission: " + rset.getString("permission") + "\n\n");
             }
             //this.message = "Success!";
         }

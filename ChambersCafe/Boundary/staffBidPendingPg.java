@@ -89,7 +89,7 @@ public class staffBidPendingPg extends javax.swing.JFrame {
         viewSlotsStatusC vssC = new viewSlotsStatusC();
         ArrayList<String> workSlots = vssC.retrieveSlots(Integer.parseInt(id));
         for (int i=0; i<workSlots.size(); i++) {
-            displayTextArea.append(workSlots.get(i));
+            displayTextArea.append(workSlots.get(i) + "\n");
             //    System.out.println(accounts.get(i));
         }
     }//GEN-LAST:event_viewButtonActionPerformed
