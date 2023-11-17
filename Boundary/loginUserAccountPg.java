@@ -3,12 +3,32 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
 
+import java.util.ArrayList;
+import java.util.Objects;
+
 /**
  *
  * @author yuanc
  */
 public class loginUserAccountPg extends javax.swing.JFrame {
 
+    private String user;
+    private String scope;
+    private String profile;
+
+    public void setScope(String scope)
+    {
+        this.scope = scope;
+    }
+    public void setProfile(String profile)
+    {
+        this.profile = profile;
+    }
+
+    public String getScope()
+    {
+        return scope;
+    }
     /**
      * Creates new form loginFrame
      */
@@ -17,6 +37,27 @@ public class loginUserAccountPg extends javax.swing.JFrame {
         setTitle("XXX CAFE LOGIN");
     }
 
+    public String loginUser()
+    {
+        loginUserAccountC lua = new loginUserAccountC();
+        user = lua.loginUserAccountC(Integer.parseInt(usernameTF.getText()), passwordTF.getText());
+        System.out.println(user);
+        return user;
+    }
+
+    public String processUser()
+    {
+        String name = user.split(", ")[0];
+        String id = user.split(", ")[1];
+        String profile = user.split(", ")[2];
+        String scope = user.split(", ")[3];
+        setScope(scope);
+        setProfile(profile);
+        System.out.println("Name is " + name);
+        System.out.println("Id is " + id);
+        System.out.println("Profile is " + profile);
+        return user;
+    }
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -57,6 +98,7 @@ public class loginUserAccountPg extends javax.swing.JFrame {
             }
         });
 
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -74,9 +116,13 @@ public class loginUserAccountPg extends javax.swing.JFrame {
                         .addComponent(passwordTF, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap(80, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(122, Short.MAX_VALUE)
-                .addComponent(loginButton)
-                .addGap(114, 114, 114))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(21, 21, 21)
+                        .addComponent(loginButton))
+                    )
+                .addGap(95, 95, 95))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -91,7 +137,8 @@ public class loginUserAccountPg extends javax.swing.JFrame {
                     .addComponent(passwordTF, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addComponent(loginButton)
-                .addGap(78, 78, 78))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGap(49, 49, 49))
         );
 
         pack();
@@ -106,34 +153,52 @@ public class loginUserAccountPg extends javax.swing.JFrame {
     }//GEN-LAST:event_passwordTFActionPerformed
 
     private void loginButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_loginButtonActionPerformed
-        String x = "admin";
-        if (x.contains("staff")){
-            staffMain sm = new staffMain();
-            sm.show(); //Staff Display Page
-            
-            dispose();
+        loginUser();
+        String x = "staff";
+        System.out.println(user);
+        if (Objects.equals(user, "Suspended"))
+        {
+            String msg = "Your account has been suspended";
+            //System.out.println(msg);
+            new displayMessage(msg).setVisible(true);
         }
-        
-        else if (x.contains("manager")){
-            managerMain mm = new managerMain();
-            mm.show(); //Manager Display Page
-            
-            dispose();
-        }
-        
-        else if (x.contains("owner")){
-            ownerMain om = new ownerMain();
-            om.show(); //Owner Display Page
-            
-            dispose();
-        }
-        else if (x.contains("admin")){
-            adminMain am = new adminMain();
-            am.show();
-            
-            dispose();
+        else {
+            if (!Objects.equals(user, "Invalid")) {
+                processUser();
+                if (profile.contains("Staff")) {
+                    staffMain sm = new staffMain();
+                    sm.setId(usernameTF.getText());
+                    sm.setRole(scope);
+                    sm.show(); //Staff Display Page
+
+                    dispose();
+                } else if (profile.contains("Manager")) {
+                    managerMain mm = new managerMain();
+                    mm.setId(usernameTF.getText());
+                    mm.show(); //Manager Display Page
+
+                    dispose();
+                } else if (profile.contains("Owner")) {
+                    ownerMain om = new ownerMain();
+                    om.setId(usernameTF.getText());
+                    om.show(); //Owner Display Page
+
+                    dispose();
+                } else if (profile.contains("Admin")) {
+                    adminMain am = new adminMain();
+                    am.show();
+                    dispose();
+                }
+            } else {
+                String msg;
+                msg = "Invalid Login, please try again";
+                new displayMessage(msg).setVisible(true);
+                //setVisible(false);
+            }
         }
     }//GEN-LAST:event_loginButtonActionPerformed
+
+
 
     /**
      * @param args the command line arguments
@@ -171,6 +236,7 @@ public class loginUserAccountPg extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+
     private javax.swing.JButton loginButton;
     private javax.swing.JLabel passwordLabel;
     private javax.swing.JTextField passwordTF;

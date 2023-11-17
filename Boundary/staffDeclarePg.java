@@ -11,6 +11,8 @@ public class staffDeclarePg extends javax.swing.JFrame {
 
     int a = 0;
     String days = "";
+    String id;
+    String role;
     
     /**
      * Creates new form staffDeclarePg
@@ -18,6 +20,12 @@ public class staffDeclarePg extends javax.swing.JFrame {
     public staffDeclarePg() {
         initComponents();
         setTitle("Staff Declaration");
+    }
+    public staffDeclarePg(String id, String role) {
+        initComponents();
+        setTitle("Staff Declaration");
+        this.id = id;
+        this.role = role;
     }
 
     /**
@@ -148,7 +156,10 @@ public class staffDeclarePg extends javax.swing.JFrame {
 
     private void submitButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_submitButtonActionPerformed
         // TODO add your handling code here:
-        messageLabel.setText( a + " days declared : " + days);
+        messageLabel.setText( a + " days declared : " + days + "\nId is: " + id + "\nRole is: " + role);
+        declareSlotsController dsC = new declareSlotsController();
+        boolean declaredSuccess = dsC.declareSlots(role, Integer.parseInt(id), days);
+        System.out.println(declaredSuccess);
     }//GEN-LAST:event_submitButtonActionPerformed
 
     private void monCBActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_monCBActionPerformed

@@ -30,7 +30,7 @@ public class updateProfilePg extends javax.swing.JFrame {
         profileTypeComboBox = new javax.swing.JComboBox<>();
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
-        jComboBox2 = new javax.swing.JComboBox<>();
+        permComboBox = new javax.swing.JComboBox<>();
         jLabel3 = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
         displayTextArea = new javax.swing.JTextArea();
@@ -43,13 +43,13 @@ public class updateProfilePg extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
-        profileTypeComboBox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Staff", "Manager", "Owner", "Admin" }));
+        profileTypeComboBox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Cafe Staff", "Cafe Manager", "Cafe Owner", "System Admin" }));
 
         jLabel1.setText("Profile Type:");
 
         jLabel2.setText("Profile Permission:");
 
-        jComboBox2.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "staff", "owner", "manager", "sysadm" }));
+        permComboBox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "staff", "owner", "manager", "sysadm" }));
 
         jLabel3.setText("Description");
 
@@ -87,7 +87,7 @@ public class updateProfilePg extends javax.swing.JFrame {
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(profileTypeComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(jComboBox2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                    .addComponent(permComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                             .addGroup(layout.createSequentialGroup()
                                 .addGap(169, 169, 169)
                                 .addComponent(jLabel3)))
@@ -117,7 +117,7 @@ public class updateProfilePg extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel2)
-                    .addComponent(jComboBox2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(permComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jLabel3)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -136,12 +136,33 @@ public class updateProfilePg extends javax.swing.JFrame {
 
     private void modifyButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_modifyButtonActionPerformed
         // TODO add your handling code here:
-        messageLabel.setText(profileTypeComboBox.getSelectedItem() + " is updated.");
+
+        updateUserProfileC uupC = new updateUserProfileC();
+        boolean isUpdated = uupC.updateUserProfile(profileTypeComboBox.getSelectedItem().toString(), displayTextArea.getText(),
+                permComboBox.getSelectedItem().toString());
+        if (isUpdated)
+        {
+            messageLabel.setText(profileTypeComboBox.getSelectedItem() + " is updated.");
+        }
+        else
+        {
+            messageLabel.setText(profileTypeComboBox.getSelectedItem() + " is not updated.");
+        }
+
+        //update here
     }//GEN-LAST:event_modifyButtonActionPerformed
 
     private void suspendButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_suspendButtonActionPerformed
         // TODO add your handling code here:
-        messageLabel.setText(profileTypeComboBox.getSelectedItem() + " is suspended.");
+        suspendUserProfileC uspC = new suspendUserProfileC();
+        boolean isSuspended = uspC.suspendProfile(profileTypeComboBox.getSelectedItem().toString());
+        if (isSuspended) {
+            messageLabel.setText(profileTypeComboBox.getSelectedItem() + " is suspended.");
+        }
+        else
+        {
+            messageLabel.setText(profileTypeComboBox.getSelectedItem() + " is not suspended.");
+        }
     }//GEN-LAST:event_suspendButtonActionPerformed
 
     /**
@@ -182,7 +203,7 @@ public class updateProfilePg extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JTextArea displayTextArea;
     private javax.swing.JCheckBoxMenuItem jCheckBoxMenuItem1;
-    private javax.swing.JComboBox<String> jComboBox2;
+    private javax.swing.JComboBox<String> permComboBox;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;

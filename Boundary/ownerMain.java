@@ -15,9 +15,14 @@ public class ownerMain extends javax.swing.JFrame {
     /**
      * Creates new form ownerMain
      */
+    private String id;
     public ownerMain() {
         initComponents();
         setTitle("Owner Main Page");
+    }
+    public void setId(String id)
+    {
+        this.id = id;
     }
 
     /**
@@ -31,7 +36,7 @@ public class ownerMain extends javax.swing.JFrame {
 
         logoutButton = new javax.swing.JButton();
         slotButton = new javax.swing.JButton();
-        updateAccountButton = new javax.swing.JButton();
+        infoButton = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -49,10 +54,10 @@ public class ownerMain extends javax.swing.JFrame {
             }
         });
 
-        updateAccountButton.setText("Update Account");
-        updateAccountButton.addActionListener(new java.awt.event.ActionListener() {
+        infoButton.setText("Change Info");
+        infoButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                updateAccountButtonActionPerformed(evt);
+                infoButtonActionPerformed(evt);
             }
         });
 
@@ -67,8 +72,8 @@ public class ownerMain extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addGap(25, 25, 25)
                 .addComponent(slotButton)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 69, Short.MAX_VALUE)
-                .addComponent(updateAccountButton)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 90, Short.MAX_VALUE)
+                .addComponent(infoButton)
                 .addGap(47, 47, 47))
         );
         layout.setVerticalGroup(
@@ -77,7 +82,7 @@ public class ownerMain extends javax.swing.JFrame {
                 .addGap(25, 25, 25)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(slotButton)
-                    .addComponent(updateAccountButton))
+                    .addComponent(infoButton))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 147, Short.MAX_VALUE)
                 .addComponent(logoutButton)
                 .addContainerGap())
@@ -100,11 +105,12 @@ public class ownerMain extends javax.swing.JFrame {
         slot.setVisible(true);
     }//GEN-LAST:event_slotButtonActionPerformed
 
-    private void updateAccountButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_updateAccountButtonActionPerformed
+    private void infoButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_infoButtonActionPerformed
         // TODO add your handling code here:
-        updateAccountPg updacc = new updateAccountPg();
-        updacc.setVisible(true);
-    }//GEN-LAST:event_updateAccountButtonActionPerformed
+        resultAccountPg raP = new resultAccountPg(id, "Owner");
+        raP.setVisible(true);
+
+    }//GEN-LAST:event_infoButtonActionPerformed
 
     /**
      * @param args the command line arguments
@@ -142,8 +148,8 @@ public class ownerMain extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton infoButton;
     private javax.swing.JButton logoutButton;
     private javax.swing.JButton slotButton;
-    private javax.swing.JButton updateAccountButton;
     // End of variables declaration//GEN-END:variables
 }

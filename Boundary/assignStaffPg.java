@@ -4,6 +4,10 @@
  */
 import com.formdev.flatlaf.FlatIntelliJLaf;
 import com.raven.datechooser.DateChooser;
+
+import java.util.ArrayList;
+import java.util.Calendar;
+
 /**
  *
  * @author yuanc
@@ -11,6 +15,10 @@ import com.raven.datechooser.DateChooser;
 public class assignStaffPg extends javax.swing.JFrame {
 
     private DateChooser chDate = new DateChooser();
+    private int dayofweek;
+    private String dayOfWeekString;
+    private String roleCheck;
+    private int idCheck;
     
     /**
      * Creates new form assignStaffPg
@@ -19,6 +27,98 @@ public class assignStaffPg extends javax.swing.JFrame {
         initComponents();
         setTitle("Assign Staff");
         chDate.setTextField(txtDate);
+    }
+
+    public void checkDay()
+    {
+        java.util.Date select = chDate.getSelectedDate();
+        Calendar calendar = Calendar.getInstance();
+        calendar.setTime(select);
+        dayofweek = calendar.get(Calendar.DAY_OF_WEEK);
+        //System.out.println("day is " + dayofweek);
+
+        switch (dayofweek)
+        {
+            case Calendar.SUNDAY:
+                dayOfWeekString = "SUN";
+                break;
+            case Calendar.MONDAY:
+                dayOfWeekString = "MON";
+                break;
+            case Calendar.TUESDAY:
+                dayOfWeekString = "TUE";
+                break;
+            case Calendar.WEDNESDAY:
+                dayOfWeekString = "WED";
+                break;
+            case Calendar.THURSDAY:
+                dayOfWeekString = "THU";
+                break;
+            case Calendar.FRIDAY:
+                dayOfWeekString = "FRI";
+                break;
+            case Calendar.SATURDAY:
+                dayOfWeekString = "SAT";
+                break;
+            default:
+                dayOfWeekString = "Invalid day";
+                break;
+        }
+        //System.out.println(dayOfWeekString);
+    }
+
+    public void updateSlots()
+    {
+        slotsComboBox.removeAllItems();
+        System.out.println("Something");
+        viewWorkSlotsC vwsC = new viewWorkSlotsC();
+        ArrayList<String> workSlots = vwsC.retrieveWorkSlot();
+        checkDay();
+        for (int i=0; i<workSlots.size(); i++) {
+            //System.out.println(workSlots.get(i));
+            String hmm = workSlots.get(i);
+            //System.out.println(hmm);
+            String role = hmm.split(", ")[0];
+            String slots = hmm.split(", ")[1];
+            String date = hmm.split(", ")[2];
+            String day = date.split("-")[2];
+            String month = date.split("-")[1];
+            String year = date.split("-")[0];
+            System.out.println(day + month + year);
+            String convert = day + "-" + month + "-" + year;
+            if (convert.equals(txtDate.getText()))
+            {
+                slotsComboBox.addItem(role + " " + slots + " slots");
+            }
+        }
+        checkStaff();
+    }
+
+    public void checkStaff()
+    {
+        staffComboBox.removeAllItems();
+        viewStaffController vsC = new viewStaffController();
+        ArrayList<String> staffDetails = vsC.viewStaffS();
+        for (int i=0; i<staffDetails.size(); i++) {
+            System.out.println(staffDetails.get(i));
+            String hmm = staffDetails.get(i);
+            if (hmm.contains(dayOfWeekString))
+            {
+                String id = hmm.split(" ")[0];
+                String role = hmm.split(" ")[1];
+                staffComboBox.addItem("ID: " + id + " " + role);
+            }
+            //    System.out.println(accounts.get(i));
+        }
+    }
+
+    public void organize()
+    {
+        String sCheck = staffComboBox.getSelectedItem().toString();
+        roleCheck = sCheck.split(" ")[2];
+        String idcheck1 = sCheck.split(" ")[1];
+        idCheck = Integer.parseInt(idcheck1);
+        //System.out.println(roleCheck + " " + idCheck);
     }
 
     /**
@@ -54,10 +154,20 @@ public class assignStaffPg extends javax.swing.JFrame {
         jLabel2.setText("Slots:");
 
         checkButton.setText("Check Slots");
+        checkButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                checkButtonActionPerformed(evt);
+            }
+        });
 
         jLabel3.setText("Staff:");
 
         assignButton.setText("Assign Staff");
+        assignButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                assignButtonActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -114,7 +224,22 @@ public class assignStaffPg extends javax.swing.JFrame {
     private void txtDateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtDateActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_txtDateActionPerformed
+    private void checkButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_checkButtonActionPerformed
+        // TODO add your handling code here:
+        updateSlots();
+    }//GEN-LAST:event_checkButtonActionPerformed
+    private void assignButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_assignButtonActionPerformed
+        // TODO add your handling code here:
+        //System.out.println("yo");
+        organize();
+        assignCafeStaffC acsC = new assignCafeStaffC();
+        int result = acsC.assignCafeStaff(txtDate.getText(), roleCheck, idCheck);
+        if (result == 1)
+        {
+            new displayMessage("Success! Staff assigned.").setVisible(true);
+        }
 
+    }//GEN-LAST:event_assignButtonActionPerformed
     /**
      * @param args the command line arguments
      */

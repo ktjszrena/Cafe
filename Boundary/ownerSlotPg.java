@@ -115,31 +115,31 @@ public class ownerSlotPg extends javax.swing.JFrame {
 
     private void viewSlotsButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_viewSlotsButtonActionPerformed
         // TODO add your handling code here:
-        slotViewPg view = new slotViewPg();
+        viewSlotsPg view = new viewSlotsPg();
         view.setVisible(true);
     }//GEN-LAST:event_viewSlotsButtonActionPerformed
 
     private void slotCreateButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_slotCreateButtonActionPerformed
         // TODO add your handling code here:
-        slotCreatePg create = new slotCreatePg();
+        createSlotsPg create = new createSlotsPg();
         create.setVisible(true);
     }//GEN-LAST:event_slotCreateButtonActionPerformed
 
     private void slotsUpdateButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_slotsUpdateButtonActionPerformed
         // TODO add your handling code here:
-        slotUpdatePg update = new slotUpdatePg();
+        updateSlotsPg update = new updateSlotsPg();
         update.setVisible(true);
     }//GEN-LAST:event_slotsUpdateButtonActionPerformed
 
     private void slotsDeleteButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_slotsDeleteButtonActionPerformed
         // TODO add your handling code here:
-        slotDeletePg delete = new slotDeletePg();
+        deleteSlotsPg delete = new deleteSlotsPg();
         delete.setVisible(true);
     }//GEN-LAST:event_slotsDeleteButtonActionPerformed
 
     private void slotsSearchButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_slotsSearchButtonActionPerformed
         // TODO add your handling code here:
-        slotSearchPg search = new slotSearchPg();
+        searchSlotsPg search = new searchSlotsPg();
         search.setVisible(true);
     }//GEN-LAST:event_slotsSearchButtonActionPerformed
 

@@ -35,8 +35,13 @@ public class searchUserProfilePg extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
         searchButton.setText("Search");
+        searchButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                searchButtonActionPerformed(evt);
+            }
+        });
 
-        profileComboBox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Staff", "Manager", "Owner", "Admin" }));
+        profileComboBox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Cafe Staff", "Cafe Manager", "Cafe Owner", "System Admin" }));
 
         displayTextArea.setColumns(20);
         displayTextArea.setRows(5);
@@ -87,6 +92,13 @@ public class searchUserProfilePg extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    private void searchButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_searchButtonActionPerformed
+        // TODO add your handling code here:
+        //search func here
+        System.out.println(profileComboBox.getSelectedItem().toString());
+        searchProfileController spC = new searchProfileController();
+        displayTextArea.setText(spC.searchProfile(profileComboBox.getSelectedItem().toString()));
+    }//GEN-LAST:event_searchButtonActionPerformed
     private void modifyButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_modifyButtonActionPerformed
         // TODO add your handling code here:
         updateProfilePg update = new updateProfilePg();

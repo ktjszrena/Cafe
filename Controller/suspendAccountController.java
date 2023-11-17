@@ -10,20 +10,18 @@
  * @author yuanc
  */
 public class suspendAccountController {
-    private boolean suspended;
+    private boolean isSuspended;
     
     public suspendAccountController(){
         
     }
     
-    boolean suspendAcc(int ID){
-        
-        UserAccount uc = new UserAccount(ID);
-        
-        suspended = uc.suspendAcc(ID);
-        System.out.println(ID);
-        System.out.print(suspended);
-        return suspended;
+    boolean suspendAcc(int userID){
+        UserAccount uc = new UserAccount(userID);
+        isSuspended = uc.suspendAcc(userID);
+        System.out.println(userID);
+        System.out.print(isSuspended);
+        return isSuspended;
     }
     
 }

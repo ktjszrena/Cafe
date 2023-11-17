@@ -3,6 +3,8 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
 
+import java.util.ArrayList;
+
 /**
  *
  * @author yuanc
@@ -15,6 +17,15 @@ public class viewUserAccountsPg extends javax.swing.JFrame {
     public viewUserAccountsPg() {
         initComponents();
         setTitle("Accounts View");
+    }
+    private ArrayList<String> userAccountDetails;
+    public void displayArray()
+    {
+        viewUserAccountsC vuac = new viewUserAccountsC();
+        userAccountDetails = vuac.viewUserAccounts();
+        //for (int i=0; i<accounts.size(); i++) {
+        //    System.out.println(accounts.get(i));
+        //}
     }
 
     /**
@@ -33,9 +44,15 @@ public class viewUserAccountsPg extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
         viewAllButton.setText("View All Accounts");
+        viewAllButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                viewAllButtonActionPerformed(evt);
+            }
+        });
 
         displayTextArea.setColumns(20);
         displayTextArea.setRows(5);
+        displayTextArea.setEditable(false);
         jScrollPane1.setViewportView(displayTextArea);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -63,7 +80,15 @@ public class viewUserAccountsPg extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-
+    public void viewAllButtonActionPerformed(java.awt.event.ActionEvent evt)
+    {
+        System.out.println("Pressed");
+        displayArray();
+        for (int i=0; i<userAccountDetails.size(); i++) {
+            displayTextArea.append(userAccountDetails.get(i));
+        //    System.out.println(accounts.get(i));
+        }
+    }
     /**
      * @param args the command line arguments
      */

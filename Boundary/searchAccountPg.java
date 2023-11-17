@@ -1,5 +1,5 @@
 
-import com.sun.tools.javac.util.Convert;
+
 
 /*
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
@@ -23,8 +23,14 @@ public class searchAccountPg extends javax.swing.JFrame {
     public String messageID(){
         String ID;
         ID = searchIDTF.getText();
-        
         return ID;
+    }
+
+    private String accountFound;
+    public void searchAccount(int userID)
+    {
+        searchAccountController SAC = new searchAccountController();
+        accountFound = SAC.searchAccount(userID);
     }
 
     /**
@@ -111,7 +117,9 @@ public class searchAccountPg extends javax.swing.JFrame {
 
     private void searchButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_searchButtonActionPerformed
         // TODO add your handling code here:
-        displayTextArea.setText("Displaying Accounts from ID: " + searchIDTF.getText());
+        displayTextArea.setText("Displaying Accounts from ID: " + searchIDTF.getText() + "\n");
+        searchAccount(Integer.parseInt(searchIDTF.getText()));
+        displayTextArea.append(accountFound);
     }//GEN-LAST:event_searchButtonActionPerformed
 
     private void modifyButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_modifyButtonActionPerformed

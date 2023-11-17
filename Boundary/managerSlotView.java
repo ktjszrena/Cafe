@@ -4,13 +4,15 @@
  */
 import com.formdev.flatlaf.FlatIntelliJLaf;
 import com.raven.datechooser.DateChooser;
+
+import java.util.ArrayList;
+
 /**
  *
  * @author yuanc
  */
 public class managerSlotView extends javax.swing.JFrame {
 
-    private DateChooser chDate = new DateChooser();
     
     /**
      * Creates new form managerSlotView
@@ -18,8 +20,6 @@ public class managerSlotView extends javax.swing.JFrame {
     public managerSlotView() {
         initComponents();
         setTitle("Manager Slot View");
-        chDate.setTextField(txtDate);
-        
     }
 
     /**
@@ -31,21 +31,21 @@ public class managerSlotView extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jLabel1 = new javax.swing.JLabel();
-        txtDate = new javax.swing.JTextField();
+        //jLabel1 = new javax.swing.JLabel();
+        //txtDate = new javax.swing.JTextField();
         jScrollPane1 = new javax.swing.JScrollPane();
         displayTextArea = new javax.swing.JTextArea();
         viewButton = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
-        jLabel1.setText("Date:");
+        //jLabel1.setText("Date:");
 
-        txtDate.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtDateActionPerformed(evt);
-            }
-        });
+        //txtDate.addActionListener(new java.awt.event.ActionListener() {
+        //    public void actionPerformed(java.awt.event.ActionEvent evt) {
+         //       txtDateActionPerformed(evt);
+         //   }
+        //});
 
         displayTextArea.setColumns(20);
         displayTextArea.setRows(5);
@@ -66,12 +66,13 @@ public class managerSlotView extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
                         .addContainerGap()
-                        .addComponent(jScrollPane1))
+                        .addComponent(jScrollPane1)
+                    )
                     .addGroup(layout.createSequentialGroup()
                         .addGap(147, 147, 147)
-                        .addComponent(jLabel1)
+                        //.addComponent(jLabel1)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(txtDate, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        //.addComponent(txtDate, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(0, 150, Short.MAX_VALUE)))
                 .addContainerGap())
             .addGroup(layout.createSequentialGroup()
@@ -84,8 +85,9 @@ public class managerSlotView extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addGap(26, 26, 26)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel1)
-                    .addComponent(txtDate, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    //.addComponent(jLabel1)
+                    //.addComponent(txtDate, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                )
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 148, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
@@ -98,7 +100,13 @@ public class managerSlotView extends javax.swing.JFrame {
 
     private void viewButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_viewButtonActionPerformed
         // TODO add your handling code here:
-        displayTextArea.setText("Displaying all slots from: " + txtDate.getText());
+        //displayTextArea.setText("Displaying all slots from: " + txtDate.getText());
+        viewWorkSlotsC vwsC = new viewWorkSlotsC();
+        ArrayList<String> workSlots = vwsC.retrieveWorkSlots();
+        for (int i=0; i<workSlots.size(); i++) {
+            displayTextArea.append(workSlots.get(i));
+            //    System.out.println(accounts.get(i));
+        }
     }//GEN-LAST:event_viewButtonActionPerformed
 
     private void txtDateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtDateActionPerformed
@@ -142,9 +150,9 @@ public class managerSlotView extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JTextArea displayTextArea;
-    private javax.swing.JLabel jLabel1;
+    //private javax.swing.JLabel jLabel1;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTextField txtDate;
+    //private javax.swing.JTextField txtDate;
     private javax.swing.JButton viewButton;
     // End of variables declaration//GEN-END:variables
 }

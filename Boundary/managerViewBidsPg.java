@@ -3,6 +3,8 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
 
+import java.util.ArrayList;
+
 /**
  *
  * @author yuanc
@@ -12,10 +14,23 @@ public class managerViewBidsPg extends javax.swing.JFrame {
     /**
      * Creates new form managerViewBidsPg
      */
+    private String date;
+    private String id;
+    private String role;
     public managerViewBidsPg() {
         initComponents();
         setTitle("Manager Bid View");
         displayTextArea.setEditable(false);
+    }
+    public void getValues()
+    {
+        String um = bidComboBox.getSelectedItem().toString();
+        String date1 = um.split(": ")[1];
+        date = date1.split(" ")[0];
+        String role1 = um.split(": ")[2];
+        role = role1.split(" ")[0];
+        id = um.split(": ")[3];
+        System.out.println(date + " " + role + " " + id);
     }
 
     /**
@@ -41,7 +56,7 @@ public class managerViewBidsPg extends javax.swing.JFrame {
         displayTextArea.setRows(5);
         jScrollPane1.setViewportView(displayTextArea);
 
-        bidComboBox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Test case 11-Jun-23 John Kitchen" }));
+        bidComboBox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "No Bids Awaiting Approval" }));
         bidComboBox.setToolTipText("");
         bidComboBox.setDoubleBuffered(true);
 
@@ -120,16 +135,46 @@ public class managerViewBidsPg extends javax.swing.JFrame {
     private void approveButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_approveButtonActionPerformed
         // TODO add your handling code here:
         messageLabel.setText("Bid: " + bidComboBox.getSelectedItem() + " has been approved.");
+        getValues();
+        updateBidsC ubc = new updateBidsC();
+        boolean isUpdated = ubc.updateBids(date, role, Integer.parseInt(id), 1);
+        if (isUpdated)
+        {
+            messageLabel.setText("Bid: " + bidComboBox.getSelectedItem() + " has been approved.");
+        }
+        else
+        {
+            messageLabel.setText("Error Updating");
+        }
     }//GEN-LAST:event_approveButtonActionPerformed
 
     private void rejectButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rejectButtonActionPerformed
         // TODO add your handling code here:
-        messageLabel.setText("Bid: " + bidComboBox.getSelectedItem() + " has been rejected.");
+        getValues();
+        updateBidsC ubc = new updateBidsC();
+        boolean isUpdated = ubc.updateBids(date, role, Integer.parseInt(id), 2);
+        if (isUpdated)
+        {
+            messageLabel.setText("Bid: " + bidComboBox.getSelectedItem() + " has been rejected.");
+        }
+        else
+        {
+            messageLabel.setText("Error Updating");
+        }
     }//GEN-LAST:event_rejectButtonActionPerformed
 
     private void viewAllBidButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_viewAllBidButtonActionPerformed
         // TODO add your handling code here:
-        displayTextArea.setText("Displaying all bids...");
+        //displayTextArea.setText("Displaying all bids...");
+        bidComboBox.removeAllItems();
+        displayTextArea.setText("");
+        viewBidsC vbC = new viewBidsC();
+        ArrayList<String> bidsList = vbC.viewBids();
+        for (int i=0; i<bidsList.size(); i++) {
+            displayTextArea.append(bidsList.get(i) + "\n");
+            bidComboBox.addItem(bidsList.get(i));
+            //    System.out.println(accounts.get(i));
+        }
     }//GEN-LAST:event_viewAllBidButtonActionPerformed
 
     /**

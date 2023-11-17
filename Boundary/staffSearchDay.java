@@ -4,6 +4,9 @@
  */
 import com.formdev.flatlaf.FlatIntelliJLaf;
 import com.raven.datechooser.DateChooser;
+
+import java.util.ArrayList;
+
 /**
  *
  * @author yuanc
@@ -11,6 +14,12 @@ import com.raven.datechooser.DateChooser;
 public class staffSearchDay extends javax.swing.JFrame {
 
     private DateChooser chDate = new DateChooser();
+    private String role;
+
+    public void setRole(String role)
+    {
+        this.role = role;
+    }
     
     /**
      * Creates new form staffSearchDay
@@ -19,6 +28,12 @@ public class staffSearchDay extends javax.swing.JFrame {
         initComponents();
         setTitle("Staff Search Day");
         chDate.setTextField(txtDate);
+    }
+    public staffSearchDay(String role) {
+        initComponents();
+        setTitle("Staff Search Day");
+        chDate.setTextField(txtDate);
+        setRole(role);
     }
 
     /**
@@ -80,7 +95,7 @@ public class staffSearchDay extends javax.swing.JFrame {
                     .addComponent(slotsResultLabel))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(searchButton)
-                .addContainerGap(38, Short.MAX_VALUE))
+                    .addContainerGap(38, Short.MAX_VALUE))
         );
 
         pack();
@@ -88,12 +103,16 @@ public class staffSearchDay extends javax.swing.JFrame {
 
     private void txtDateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtDateActionPerformed
         // TODO add your handling code here:
-        slotsResultLabel.setText("x Slots available on: " + txtDate.getText());
+        //slotsResultLabel.setText("x Slots available on: " + txtDate.getText());
     }//GEN-LAST:event_txtDateActionPerformed
 
     private void searchButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_searchButtonActionPerformed
         // TODO add your handling code here:
-        slotsResultLabel.setText("x Slots available on: " + txtDate.getText());
+        //slotsResultLabel.setText("x Slots available on: " + txtDate.getText());
+        searchDayController sdC = new searchDayController();
+        String dayFound = sdC.searchDay(txtDate.getText(), role);
+        slotsResultLabel.setText(dayFound);
+
     }//GEN-LAST:event_searchButtonActionPerformed
 
     /**

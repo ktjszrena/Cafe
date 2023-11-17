@@ -2,7 +2,7 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
-
+import java.util.ArrayList;
 /**
  *
  * @author yuanc
@@ -73,7 +73,14 @@ public class availableStaff extends javax.swing.JFrame {
 
     private void viewButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_viewButtonActionPerformed
         // TODO add your handling code here:
-        displayTextArea.setText("Displaying All Available Staff: ");
+        //displayTextArea.setText("Displaying All Available Staff: ");
+        viewStaffController vsC = new viewStaffController();
+        ArrayList<String> staffDetails = vsC.viewStaff();
+        for (int i=0; i<staffDetails.size(); i++) {
+            displayTextArea.append(staffDetails.get(i));
+            //    System.out.println(accounts.get(i));
+        }
+
     }//GEN-LAST:event_viewButtonActionPerformed
 
     /**

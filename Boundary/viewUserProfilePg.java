@@ -4,6 +4,8 @@
  */
 
 
+import java.util.ArrayList;
+
 /**
  *
  * @author yuanc
@@ -17,6 +19,15 @@ public class viewUserProfilePg extends javax.swing.JFrame {
         initComponents();
         setTitle("User Profiles");
         displayTextArea.setEditable(false);
+    }
+
+    private ArrayList<String> userProfileDetails;
+
+    public void displayArray()
+    {
+        viewUserProfilesC vupc = new viewUserProfilesC();
+        userProfileDetails = vupc.viewUserProfile();
+        //System.out.println(userProfileDetails);
     }
 
     /**
@@ -73,7 +84,13 @@ public class viewUserProfilePg extends javax.swing.JFrame {
 
     private void viewProfileButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_viewProfileButtonActionPerformed
         // TODO add your handling code here:
-        displayTextArea.setText("Viewing all Profiles...");
+        //displayTextArea.setText("Viewing all Profiles...");
+        displayArray();
+        for (int i=0; i<userProfileDetails.size(); i++) {
+            displayTextArea.append(userProfileDetails.get(i));
+            //    System.out.println(accounts.get(i));
+        }
+
     }//GEN-LAST:event_viewProfileButtonActionPerformed
 
     /**

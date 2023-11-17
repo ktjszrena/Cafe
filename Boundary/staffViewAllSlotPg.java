@@ -3,6 +3,8 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
 
+import java.util.ArrayList;
+
 /**
  *
  * @author yuanc
@@ -72,7 +74,19 @@ public class staffViewAllSlotPg extends javax.swing.JFrame {
 
     private void viewAllButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_viewAllButtonActionPerformed
         // TODO add your handling code here:
-        displayTextArea.setText("Displaying all work slots... ");
+        //displayTextArea.setText("Displaying all work slots... ");
+        viewWorkSlotsC vwsC = new viewWorkSlotsC();
+        ArrayList<String> workSlots = vwsC.retrieveWorkSlots();
+        for (int i=0; i<workSlots.size(); i++) {
+            String check = workSlots.get(i);
+            String check1 = check.split("\n")[1];
+            String number = check1.split(": ")[1];
+            System.out.println(number);
+            if (Integer.parseInt(number) > 0) {
+                displayTextArea.append(workSlots.get(i));
+            }
+            //    System.out.println(accounts.get(i));
+        }
     }//GEN-LAST:event_viewAllButtonActionPerformed
 
     /**

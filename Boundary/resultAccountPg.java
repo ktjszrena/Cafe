@@ -3,6 +3,8 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
 
+import java.util.Objects;
+
 /**
  *
  * @author yuanc
@@ -16,14 +18,59 @@ public class resultAccountPg extends javax.swing.JFrame {
         initComponents();
         setTitle("Account Modification");
         IDTextField.setEditable(false);
-        
-       
     }
 
     resultAccountPg(String msg) {
         initComponents();
         IDTextField.setText(msg);
         IDTextField.setEditable(false);
+    }
+
+    resultAccountPg(String id, String role)
+    {
+        initComponents();
+        IDTextField.setText(id);
+        IDTextField.setEditable(false);
+        setRole(role);
+        if (Objects.equals(role, "Owner"))
+        {
+            profileCB.setEnabled(false);
+            profileCB.removeAllItems();
+            profileCB.addItem("Cafe Owner");
+            scopeCB.setEnabled(false);
+            scopeCB.removeAllItems();
+            scopeCB.addItem("Owner");
+            suspendButton.setEnabled(false);
+        }
+        else if (Objects.equals(role, "Manager"))
+        {
+            profileCB.setEnabled(false);
+            profileCB.removeAllItems();
+            profileCB.addItem("Cafe Manager");
+            scopeCB.setEnabled(false);
+            scopeCB.removeAllItems();
+            scopeCB.addItem("Manager");
+            suspendButton.setEnabled(false);
+        }
+        else if (Objects.equals(role, "Staff"))
+        {
+            profileCB.setEnabled(false);
+            profileCB.removeAllItems();
+            profileCB.addItem("Cafe Staff");
+            //scopeCB.setEnabled(false);
+            scopeCB.removeAllItems();
+            scopeCB.addItem("Chef");
+            scopeCB.addItem("Waiter");
+            scopeCB.addItem("Cashier");
+            suspendButton.setEnabled(false);
+        }
+    }
+
+    private String role;
+
+    public void setRole(String role)
+    {
+        this.role = role;
     }
 
     /**
@@ -91,14 +138,14 @@ public class resultAccountPg extends javax.swing.JFrame {
 
         jLabel6.setText("Scope:");
 
-        profileCB.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Staff", "Manager", "Owner", "Admin" }));
+        profileCB.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Cafe Staff", "Cafe Manager", "Cafe Owner", "System Admin" }));
         profileCB.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 profileCBActionPerformed(evt);
             }
         });
 
-        scopeCB.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Kitchen", "Waiter", "Cashier", "Manager", "Owner", "Admin" }));
+        scopeCB.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Chef", "Waiter", "Cashier", "Manager", "Owner", "Admin" }));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -177,15 +224,15 @@ public class resultAccountPg extends javax.swing.JFrame {
     }//GEN-LAST:event_addressTextFieldActionPerformed
 
     private void suspendButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_suspendButtonActionPerformed
-        boolean suspended;
+        boolean isSuspended;
         // TODO add your handling code here:
         // Call suspendAccountC:
         suspendAccountController saC = new suspendAccountController();
-        suspended = saC.suspendAcc(Integer.parseInt(IDTextField.getText()));
+        isSuspended = saC.suspendAcc(Integer.parseInt(IDTextField.getText()));
         
         //System.out.println(IDTextField.getText());
         
-        if (suspended == true)
+        if (isSuspended == true)
             messageLabel.setText("ID: " + IDTextField.getText() + " is suspended");
         else
             messageLabel.setText("ID: " + IDTextField.getText() + " is not suspended");
@@ -194,6 +241,9 @@ public class resultAccountPg extends javax.swing.JFrame {
     private void updateButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_updateButtonActionPerformed
         boolean updated = false;
         // TODO add your handling code here:
+        updateUserAccountC uuaC = new updateUserAccountC();
+        updated = uuaC.updateUserAccount(nameTextField.getText(), Integer.parseInt(IDTextField.getText()), passwordTextField.getText()
+        , addressTextField.getText(), profileCB.getSelectedItem().toString(), scopeCB.getSelectedItem().toString());
         //Call updateAccountC
         if (updated == true)
             messageLabel.setText("ID: " + IDTextField.getText() + " is updated.");
@@ -207,6 +257,7 @@ public class resultAccountPg extends javax.swing.JFrame {
 
     private void profileCBActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_profileCBActionPerformed
         // TODO add your handling code here:
+
         
     }//GEN-LAST:event_profileCBActionPerformed
 
