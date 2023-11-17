@@ -65,3 +65,6 @@ describe staffshift;
 Part and Full Time table
 create table pftable (date date, pt int, ft int);
 describe pftable;
+
+To import the tables
+mysql -u username -p new_database < data-dump.sql
